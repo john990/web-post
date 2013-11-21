@@ -21,9 +21,9 @@ public class HelloController {
 
 	@RequestMapping(value="bean", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody JavaBean[] printJson() {
-		System.out.println("println:printJson");
+		System.out.println("println:qqqq");
 		JavaBean[] beans = new JavaBean[10];
-		for(int i=0;i<10;i++){
+		for(int i=0;i<5;i++){
 			beans[i] = new JavaBean();
 		}
 		return beans;

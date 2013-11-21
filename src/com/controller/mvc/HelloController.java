@@ -1,6 +1,6 @@
-package com.spring.mvc;
+package com.controller.mvc;
 
-import com.spring.bean.JavaBean;
+import com.controller.bean.JavaBean;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

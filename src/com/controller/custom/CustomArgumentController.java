@@ -1,4 +1,4 @@
-package com.spring.custom;
+package com.controller.custom;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

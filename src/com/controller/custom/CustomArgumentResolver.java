@@ -1,4 +1,4 @@
-package com.spring.custom;
+package com.controller.custom;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;

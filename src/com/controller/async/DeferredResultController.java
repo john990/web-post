@@ -1,4 +1,4 @@
-package com.spring.async;
+package com.controller.async;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;

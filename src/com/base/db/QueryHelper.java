@@ -1,4 +1,4 @@
-package com.db;
+package com.base.db;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.dbutils.BasicRowProcessor;
@@ -17,7 +17,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.spring.async;
+package com.controller.async;
 
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.async.CallableProcessingInterceptorAdapter;

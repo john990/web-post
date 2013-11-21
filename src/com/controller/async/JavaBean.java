@@ -1,4 +1,4 @@
-package com.spring.async;
+package com.controller.async;
 
 public class JavaBean {
 

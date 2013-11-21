@@ -1,4 +1,4 @@
-package com.spring.bean;
+package com.controller.bean;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

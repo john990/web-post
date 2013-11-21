@@ -1,4 +1,4 @@
-package com.spring.convert;
+package com.controller.convert;
 
 public final class SocialSecurityNumber {
 

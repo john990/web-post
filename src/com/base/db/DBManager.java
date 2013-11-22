@@ -80,11 +80,19 @@ public class DBManager {
 		}
 	}
 
-	public final static Connection getConnection() throws SQLException {
+	public final static DataSource getDataSource(){
+		return dataSource;
+	}
+
+	public final static Connection getConnection(){
 		Connection conn = conns.get();
-		if (conn == null || conn.isClosed()) {
-			conn = dataSource.getConnection();
-			conns.set(conn);
+		try{
+			if (conn == null || conn.isClosed()) {
+				conn = dataSource.getConnection();
+				conns.set(conn);
+			}
+		}catch (SQLException e){
+			log.error("Unable to get connection!!!",e);
 		}
 		return (show_sql && !Proxy.isProxyClass(conn.getClass())) ? new _DebugConnection(conn).getConnection() : conn;
 	}

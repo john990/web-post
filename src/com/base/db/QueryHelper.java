@@ -4,6 +4,7 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -18,18 +19,25 @@ import org.apache.commons.logging.LogFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
-* Created by kai.wang on 11/20/13.
-*/
+ * Created by kai.wang on 11/20/13.
+ */
 
 public class QueryHelper {
 
 	private static final Log logger = LogFactory.getLog(QueryHelper.class);
 
-	// 查询（返回 Array）
+	/**
+	 * 查询（返回 Array）
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static Object[] queryArray(QueryRunner runner, String sql, Object... params) {
 		Object[] result = null;
 		try {
@@ -42,7 +50,13 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询（返回 ArrayList）
+	/**
+	 * 查询（返回 ArrayList）
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static List<Object[]> queryArrayList(QueryRunner runner, String sql, Object... params) {
 		List<Object[]> result = null;
 		try {
@@ -55,7 +69,13 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询（返回 Map）
+	/**
+	 * 查询（返回 Map）
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static Map<String, Object> queryMap(QueryRunner runner, String sql, Object... params) {
 		Map<String, Object> result = null;
 		try {
@@ -68,7 +88,13 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询（返回 MapList）
+	/**
+	 * 查询（返回 MapList）
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static List<Map<String, Object>> queryMapList(QueryRunner runner, String sql, Object... params) {
 		List<Map<String, Object>> result = null;
 		try {
@@ -81,7 +107,16 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询（返回 Bean）
+	/**
+	 * 查询（返回 Bean）
+	 * @param runner
+	 * @param cls
+	 * @param map
+	 * @param sql
+	 * @param params
+	 * @param <T>
+	 * @return
+	 */
 	public static <T> T queryBean(QueryRunner runner, Class<T> cls, Map<String, String> map, String sql, Object... params) {
 		T result = null;
 		try {
@@ -98,15 +133,47 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询（返回 BeanList）
-	public static <T> List<T> queryBeanList(QueryRunner runner, Class<T> cls, Map<String, String> map, String sql, Object... params) {
+//	/**
+//	 * 查询（返回 BeanList）
+//	 *
+//	 * @param runner
+//	 * @param cls    bean.class
+//	 * @param map    字段对应的别名
+//	 * @param sql    sql
+//	 * @param params
+//	 * @param <T>
+//	 * @return
+//	 */
+//	public static <T> List<T> queryBeanList(QueryRunner runner, Class<T> cls, Map<String, String> map, String sql, Object... params) {
+//		List<T> result = null;
+//		try {
+//			if (MapUtils.isNotEmpty(map)) {
+//				result = runner.query(sql, new BeanListHandler<T>(cls, new BasicRowProcessor(new BeanProcessor(map))), params);
+//			} else {
+//				logger.error("queryBeanList fail because param 'map' is null.");
+//				return new ArrayList<T>();
+//			}
+//			printSQL(sql);
+//		} catch (SQLException e) {
+//			logger.error(e.getMessage(), e);
+//			throw new RuntimeException(e.getMessage(), e);
+//		}
+//		return result;
+//	}
+
+	/**
+	 * 查询（返回 BeanList）
+	 * @param runner
+	 * @param cls
+	 * @param sql
+	 * @param params
+	 * @param <T>
+	 * @return
+	 */
+	public static <T> List<T> queryBeanList(QueryRunner runner, Class<T> cls, String sql, Object... params) {
 		List<T> result = null;
 		try {
-			if (MapUtils.isNotEmpty(map)) {
-				result = runner.query(sql, new BeanListHandler<T>(cls, new BasicRowProcessor(new BeanProcessor(map))), params);
-			} else {
-				result = runner.query(sql, new BeanListHandler<T>(cls), params);
-			}
+			result = runner.query(sql, new BeanListHandler<T>(cls), params);
 			printSQL(sql);
 		} catch (SQLException e) {
 			logger.error(e.getMessage(), e);
@@ -115,7 +182,14 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询指定列名的值（单条数据）
+	/**
+	 * 查询指定列名的值（单条数据）
+	 * @param runner
+	 * @param column
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static Object queryColumn(QueryRunner runner, String column, String sql, Object... params) {
 		Object result = null;
 		try {
@@ -128,7 +202,15 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询指定列名的值（多条数据）
+	/**
+	 * 查询指定列名的值（多条数据）
+	 * @param runner
+	 * @param column
+	 * @param sql
+	 * @param params
+	 * @param <T>
+	 * @return
+	 */
 	public static <T> List<T> queryColumnList(QueryRunner runner, String column, String sql, Object... params) {
 		List<T> result = null;
 		try {
@@ -141,7 +223,15 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 查询指定列名对应的记录映射
+	/**
+	 * 查询指定列名对应的记录映射
+	 * @param runner
+	 * @param column
+	 * @param sql
+	 * @param params
+	 * @param <T>
+	 * @return
+	 */
 	public static <T> Map<T, Map<String, Object>> queryKeyMap(QueryRunner runner, String column, String sql, Object... params) {
 		Map<T, Map<String, Object>> result = null;
 		try {
@@ -154,7 +244,14 @@ public class QueryHelper {
 		return result;
 	}
 
-	// 更新（包括 UPDATE、INSERT、DELETE，返回受影响的行数）
+	/**
+	 * 更新（包括 UPDATE、INSERT、DELETE，返回受影响的行数）
+	 * @param runner
+	 * @param conn
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public static int update(QueryRunner runner, Connection conn, String sql, Object... params) {
 		int result = 0;
 		try {

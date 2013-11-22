@@ -27,7 +27,7 @@ public class HelloController {
 		System.out.println("action:hello");
 		String sql = "select * from user where id > ?";
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "1");
+		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "0");
 		for (User user : users) {
 			System.out.println(user.getName());
 		}

@@ -269,8 +269,9 @@ public class QueryHelper {
 	}
 
 	private static void printSQL(String sql) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("SQL: " + sql);
-		}
+//		if (logger.isDebugEnabled()) {
+//			logger.debug("SQL: " + sql);
+//		}
+		logger.debug("SQL: " + sql);
 	}
 }

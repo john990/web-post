@@ -20,13 +20,14 @@ import java.util.List;
 @Controller
 @RequestMapping()
 public class HelloController {
+
 	@RequestMapping(value = "hello", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
 		System.out.println("action:hello");
 		String sql = "select * from user where id > ?";
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "0;delete from user where id=1;");
+		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "1");
 		for (User user : users) {
 			System.out.println(user.getName());
 		}
@@ -34,9 +35,7 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "bean", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public
-	@ResponseBody
-	JavaBean[] printJson() {
+	public @ResponseBody JavaBean[] printJson() {
 		System.out.println("println:qqqq");
 		JavaBean[] beans = new JavaBean[10];
 		for (int i = 0; i < 5; i++) {

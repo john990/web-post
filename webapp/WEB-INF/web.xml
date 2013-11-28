@@ -37,7 +37,7 @@
 	<!-- 禁止访问JSP页面 -->
 	<filter>
 		<filter-name>jsp_filter</filter-name>
-		<filter-class>com.controller.filter.JspFilter</filter-class>
+		<filter-class>com.psy.controller.filter.JspFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>jsp_filter</filter-name>

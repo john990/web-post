@@ -13,11 +13,11 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven conversion-service="conversionService">
 		<argument-resolvers>
-			<beans:bean class="com.controller.custom.CustomArgumentResolver"/>
+			<beans:bean class="com.psy.controller.custom.CustomArgumentResolver"/>
 		</argument-resolvers>
 		<async-support default-timeout="3000">
 			<callable-interceptors>
-				<beans:bean class="com.controller.async.TimeoutCallableProcessingInterceptor" />
+				<beans:bean class="com.psy.controller.async.TimeoutCallableProcessingInterceptor" />
 			</callable-interceptors>
 		</async-support>
 	</annotation-driven>
@@ -34,7 +34,7 @@
 	<!-- Only needed because we install custom converters to support the examples in the org.springframewok.samples.mvc.convert package -->
 	<beans:bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<beans:property name="formatters">
-			<beans:bean class="com.controller.convert.MaskFormatAnnotationFormatterFactory" />
+			<beans:bean class="com.psy.controller.convert.MaskFormatAnnotationFormatterFactory" />
 		</beans:property>
 	</beans:bean>
 

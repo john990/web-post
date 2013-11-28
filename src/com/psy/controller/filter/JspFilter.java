@@ -27,6 +27,7 @@ public class JspFilter implements Filter {
 		StringBuffer url = httpreq.getRequestURL();
 		//判断地址中是否包含"JSP"
 		if (url.indexOf(".jsp") > 0 && url.indexOf("404.jsp") == -1) {
+			System.out.println("JspFilter,exception");
 			HttpServletResponse httpres = (HttpServletResponse) response;
 			//跳转到网站根目录，也可以根据自己的需要重定位到自己的Action
 			httpres.sendRedirect("404.jsp");

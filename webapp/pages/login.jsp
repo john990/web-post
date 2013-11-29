@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: kai
@@ -11,7 +12,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>login</title>
 </head>
-<body>
-login
+<body style="margin: auto;padding: 200px;">
+    <form:form id="form" method="post" modelAttribute="user" cssClass="cleanform">
+        <form:input path="name" />
+        <form:input path="password" />
+        <p><button type="submit">Submit</button></p>
+    </form:form>
 </body>
 </html>

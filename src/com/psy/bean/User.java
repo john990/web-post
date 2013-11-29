@@ -12,12 +12,10 @@ public class User {
 
 	private int id;
 
-	@NotNull
 	@Max(30)
 	@Min(2)
 	private String name;
 
-	@NotNull
 	@Max(20)
 	@Min(6)
 	private String password;

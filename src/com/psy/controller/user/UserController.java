@@ -13,23 +13,4 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping()
 public class UserController {
 
-	/**
-	 * 登陆页面
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public static String login(ModelMap model){
-		return "login";
-	}
-
-	/**
-	 * 登陆验证
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "login-check", method = RequestMethod.POST)
-	public static String loginCheck(ModelMap model){
-		return "login";
-	}
 }

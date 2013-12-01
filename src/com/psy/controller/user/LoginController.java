@@ -30,7 +30,11 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void login(ModelMap model){
-		System.out.println("login");
+//		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+//		List<User> users = QueryHelper.queryBeanList(runner, User.class, SQL.USER, "0");
+//		for (User user : users) {
+//			System.out.println(user.getName());
+//		}
 	}
 
 	@ModelAttribute("user")
@@ -54,7 +58,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public String processSubmit(@Valid User user, BindingResult result,
+	public String processSubmit(@Valid FormUser user, BindingResult result,
 	                            @ModelAttribute("ajaxRequest") boolean ajaxRequest,
 	                            Model model, RedirectAttributes redirectAttrs) {
 		if (result.hasErrors()) {
@@ -76,7 +80,7 @@ public class LoginController {
 			// store a success message for rendering on the next request after redirect
 			// redirect back to the form to render the success message along with newly bound values
 			redirectAttrs.addFlashAttribute("message", message);
-			return "redirect:/form";
+			return "redirect:/login";
 		}
 	}
 }

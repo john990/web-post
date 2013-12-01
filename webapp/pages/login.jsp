@@ -10,13 +10,58 @@
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/css/jquery.validator.css">
+    <script type="text/javascript" async="" src="/resources/js/jquery-1.10.2.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <script type="text/javascript" async="" src="/resources/js/jquery.validator.js"></script>
+    <![endif]-->
     <title>login</title>
 </head>
-<body style="margin: auto;padding: 200px;">
-    <form:form id="form" method="post" modelAttribute="user" cssClass="cleanform">
-        <form:input path="name" />
-        <form:input path="password" />
-        <p><button type="submit">Submit</button></p>
+
+<style type="text/css">
+</style>
+<body >
+<div class="container">
+    <form:form id="form" role="form" method="post" modelAttribute="user" class="form-horizontal"
+               autocomplete="false"
+               data-validator-option="{theme:'simple_right'}">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户名：</label>
+
+                <div class="col-sm-10">
+                    <form:input class="form-control" path="name"
+                                data-rule="用户名:required;username" placeholder="用户名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">密码：</label>
+
+                <div class="col-sm-10">
+                    <form:input class="form-control" path="password"
+                                data-rule="用户名:required;password" placeholder="密码" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">邮箱：</label>
+
+                <div class="col-sm-10">
+                    <form:input class="input" path="email" data-rule="邮箱:required;email"
+                                placeholder="EMAIL" />
+                </div>
+            </div>
+        </fieldset>
+        <p>
+            <input type="submit" class="btn btn-primary" value="注册">
+        </p>
     </form:form>
+</div>
 </body>
 </html>

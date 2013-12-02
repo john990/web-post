@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/jquery.validator.css">
-    <script type="text/javascript" async="" src="/resources/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-1.10.2.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/resources/css/bootstrap.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,6 +29,7 @@
 </style>
 <body >
 <div class="container">
+    <p id="formsContent"></p>
     <form:form id="form" role="form" method="post" modelAttribute="user" class="form-horizontal"
                autocomplete="false"
                data-validator-option="{theme:'simple_right'}">
@@ -38,15 +39,15 @@
 
                 <div class="col-sm-10">
                     <form:input class="form-control" path="name"
-                                data-rule="用户名:required;username" placeholder="用户名" />
+                                data-rule="用户名:required;username" placeholder="用户名" value="${user.name}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">密码：</label>
 
                 <div class="col-sm-10">
-                    <form:input class="form-control" path="password"
-                                data-rule="用户名:required;password" placeholder="密码" />
+                    <form:password class="form-control" path="password"
+                                data-rule="用户名:required;password" placeholder="密码" value=""/>
                 </div>
             </div>
             <div class="form-group">
@@ -54,7 +55,7 @@
 
                 <div class="col-sm-10">
                     <form:input class="input" path="email" data-rule="邮箱:required;email"
-                                placeholder="EMAIL" />
+                                placeholder="EMAIL" value="${user.email}"/>
                 </div>
             </div>
         </fieldset>
@@ -63,5 +64,18 @@
         </p>
     </form:form>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#form").submit(function() {
+            $.post($(this).attr("action"), $(this).serialize(), function(html) {
+                $("#formsContent").replaceWith(html);
+                $('html, body').animate({ scrollTop: $("#formsContent").offset().top }, 500);
+            });
+            return false;
+        });
+    });
+</script>
+
 </body>
 </html>

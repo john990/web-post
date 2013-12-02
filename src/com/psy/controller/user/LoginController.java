@@ -3,10 +3,14 @@ package com.psy.controller.user;
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,12 +64,17 @@ public class LoginController {
 	@RequestMapping(method=RequestMethod.POST)
 	public String processSubmit(@Valid FormUser user, BindingResult result,
 	                            @ModelAttribute("ajaxRequest") boolean ajaxRequest,
-	                            Model model, RedirectAttributes redirectAttrs) {
+	                            Model model, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
-			List<ObjectError> errors = result.getAllErrors();
-			for(ObjectError error : errors){
-				System.out.println(error);
+			List<FieldError> filedErrors = result.getFieldErrors();
+			JSONArray jsonArray = new JSONArray();
+			for(FieldError error : filedErrors){
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put(error.getField(),error.getDefaultMessage());
+				jsonArray.put(jsonObject);
 			}
+			model.addAttribute("error",jsonArray);
+			model.addAttribute("user",user);
 			return null;
 		}
 		// Typically you would save to a db and clear the "form" attribute from the session

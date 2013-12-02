@@ -54,7 +54,8 @@ public class Read {
 				if (line.startsWith("#")) {
 					continue;
 				}
-				sql.append(line + "\r\n");
+				sql.append(line);
+				sql.append("\r\n");
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

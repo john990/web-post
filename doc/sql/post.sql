@@ -1,1 +1,0 @@
-INSERT INTO `post` (`Id`, `user_id`, `title`, `content`, `comment_count`, `status`, `create_at`, `update_at`) VALUES (1, 1, '2', '资源应该有特殊标记如：<source:>source id</source>', 0, 1, '2013-11-24 19:41:53', '2013-11-24 19:46:22');

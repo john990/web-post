@@ -6,6 +6,7 @@ import com.psy.base.security.Encipher;
 import com.psy.bean.User;
 import com.psy.common.Msg;
 import com.psy.common.SQL;
+import com.psy.controller.user.LoginUser;
 import com.psy.controller.user.RegUser;
 
 import org.apache.commons.dbutils.QueryRunner;
@@ -66,6 +67,18 @@ public class UserDao {
 	public static int addUser(RegUser user){
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		return QueryHelper.update(runner, null,SQL.ADD_USER,new String[]{user.getName(), Encipher.encrypt(user.getPassword()),user.getEmail(), User.TYPE_NORMAL});
+	}
+
+	/**
+	 * 用户登录验证
+	 * @return
+	 */
+	public static boolean validateUser(LoginUser user){
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		if (QueryHelper.queryCount(runner, SQL.VALIDATE_USER, new String[]{user.getName(),user.getName(), Encipher.encrypt(user.getPassword())}) != 0) {
+			return true;
+		}
+		return false;
 	}
 
 }

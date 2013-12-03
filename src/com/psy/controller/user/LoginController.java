@@ -2,6 +2,7 @@ package com.psy.controller.user;
 
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
+import com.psy.dao.UserDao;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,7 +48,9 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(@Valid User user, BindingResult result,RedirectAttributes redirectAttrs) throws JSONException {
+	public String processSubmit(@Valid LoginUser user, BindingResult result,
+	                            @ModelAttribute("ajaxRequest") boolean ajaxRequest,
+	                            Model model, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
 			JSONArray jsonArray = new JSONArray();
@@ -60,6 +63,12 @@ public class LoginController {
 			redirectAttrs.addFlashAttribute("user", user);
 			return "redirect:/login";
 		}
-		return "redirect:/login";
+		if(UserDao.validateUser(user)){
+			redirectAttrs.addFlashAttribute("success", "登陆成功");
+			return "redirect:/login";
+		}else{
+			redirectAttrs.addFlashAttribute("error", "用户名或密码错误");
+			return "redirect:/login";
+		}
 	}
 }

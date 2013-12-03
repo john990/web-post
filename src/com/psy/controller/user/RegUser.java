@@ -15,7 +15,7 @@ public class RegUser {
 
 	private int id;
 
-	@Size(min = 2, max = 15, message = "用户名长度不正确")
+	@Size(min = 3, max = 15, message = "用户名长度不正确")
 	private String name;
 
 	@Size(min = 6, max = 20, message = "密码长度不正确")

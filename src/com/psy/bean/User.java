@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
  */
 public class User {
 
+	public static final String TYPE_NORMAL = "1";
+
 	private int id;
 
 	private String name;

@@ -69,6 +69,7 @@ public class Read {
 				}
 			}
 		}
+		System.out.println("readSql:"+sql.toString());
 		return sql.toString();
 	}
 

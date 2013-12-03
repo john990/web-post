@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 /**
  * Created by kai.wang on 11/21/13.
  */
-public class FormUser {
+public class RegUser {
 
 	private int id;
 

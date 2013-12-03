@@ -22,7 +22,7 @@
     <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
     <script type="text/javascript" async="" src="/resources/js/jquery.validator.js"></script>
     <![endif]-->
-    <title>login</title>
+    <title>注册</title>
 </head>
 
 <style type="text/css">
@@ -51,9 +51,17 @@
                                 data-rule="用户名:required;password" placeholder="密码" value=""/>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">邮箱：</label>
+
+                <div class="col-sm-10">
+                    <form:input class="input" path="email" data-rule="邮箱:required;email"
+                                placeholder="EMAIL" value="${user.email}"/>
+                </div>
+            </div>
         </fieldset>
         <p>
-            <input type="submit" class="btn btn-primary" value="登陆">
+            <input type="submit" class="btn btn-primary" value="注册">
         </p>
     </form:form>
 </div>

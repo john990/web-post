@@ -2,6 +2,8 @@ package com.psy.controller.user;
 
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
+import com.psy.common.Msg;
+import com.psy.dao.UserDao;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,12 +30,12 @@ import javax.validation.Valid;
  * Function : 注册
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/reg")
 @SessionAttributes("user")
-public class LoginController {
+public class RegisterControlller {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void login(ModelMap model) {
+	public void reg(ModelMap model) {
 	}
 
 	@ModelAttribute("user")
@@ -46,8 +48,8 @@ public class LoginController {
 		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request));
 	}
 
-	@RequestMapping(method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(@Valid User user, BindingResult result,RedirectAttributes redirectAttrs) throws JSONException {
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String processSubmit(@Valid RegUser user, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
 			JSONArray jsonArray = new JSONArray();
@@ -58,8 +60,31 @@ public class LoginController {
 			}
 			redirectAttrs.addFlashAttribute("error", jsonArray);
 			redirectAttrs.addFlashAttribute("user", user);
-			return "redirect:/login";
+			return "redirect:/reg";
 		}
-		return "redirect:/login";
+
+		// 检查用户名/邮箱是否存在
+		JSONArray errors = new JSONArray();
+		if (UserDao.hasUsername(user.getName())) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("username", Msg.USERNAME_ALREADY_REG);
+			errors.put(jsonObject);
+		}
+		if (UserDao.hasEmail(user.getEmail())) {
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("email", Msg.EMAIL_ALREADY_REG);
+			errors.put(jsonObject);
+		}
+		if (errors.length() > 0) {
+			redirectAttrs.addFlashAttribute("error", errors);
+			return "redirect:/reg";
+		}
+
+		if (UserDao.addUser(user) > 0) {
+			redirectAttrs.addFlashAttribute("success", "注册成功");
+			return "redirect:/success";
+		}
+
+		return "redirect:/reg";
 	}
 }

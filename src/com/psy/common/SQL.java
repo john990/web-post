@@ -7,5 +7,7 @@ import com.psy.base.io.Read;
  * Function : SQL语句
  */
 public class SQL {
-	public static String USER = Read.readSql("user.sql");
+	public static String HAVE_USER_NAME = Read.readSql("have_user_name.sql");
+	public static String HAVE_USER_EMAIL = Read.readSql("have_user_email.sql");
+	public static String ADD_USER = Read.readSql("add_user.sql");
 }

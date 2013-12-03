@@ -16,7 +16,9 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.math.BigInteger;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +31,20 @@ public class QueryHelper {
 
 	private static final Log logger = LogFactory.getLog(QueryHelper.class);
 
+
+	private final static ScalarHandler scaleHandler = new ScalarHandler() {
+		@Override
+		public Object handle(ResultSet rs) throws SQLException {
+			Object obj = super.handle(rs);
+			if (obj instanceof BigInteger) return ((BigInteger) obj).longValue();
+			return obj;
+		}
+	};
+
+
 	/**
 	 * 查询（返回 Array）
+	 *
 	 * @param runner
 	 * @param sql
 	 * @param params
@@ -50,6 +64,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询（返回 ArrayList）
+	 *
 	 * @param runner
 	 * @param sql
 	 * @param params
@@ -69,6 +84,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询（返回 Map）
+	 *
 	 * @param runner
 	 * @param sql
 	 * @param params
@@ -88,6 +104,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询（返回 MapList）
+	 *
 	 * @param runner
 	 * @param sql
 	 * @param params
@@ -107,6 +124,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询（返回 Bean）
+	 *
 	 * @param runner
 	 * @param cls
 	 * @param map
@@ -131,36 +149,9 @@ public class QueryHelper {
 		return result;
 	}
 
-//	/**
-//	 * 查询（返回 BeanList）
-//	 *
-//	 * @param runner
-//	 * @param cls    bean.class
-//	 * @param map    字段对应的别名
-//	 * @param sql    sql
-//	 * @param params
-//	 * @param <T>
-//	 * @return
-//	 */
-//	public static <T> List<T> queryBeanList(QueryRunner runner, Class<T> cls, Map<String, String> map, String sql, Object... params) {
-//		List<T> result = null;
-//		try {
-//			if (MapUtils.isNotEmpty(map)) {
-//				result = runner.query(sql, new BeanListHandler<T>(cls, new BasicRowProcessor(new BeanProcessor(map))), params);
-//			} else {
-//				logger.error("queryBeanList fail because param 'map' is null.");
-//				return new ArrayList<T>();
-//			}
-//			printSQL(sql);
-//		} catch (SQLException e) {
-//			logger.error(e.getMessage(), e);
-//			throw new RuntimeException(e.getMessage(), e);
-//		}
-//		return result;
-//	}
-
 	/**
 	 * 查询（返回 BeanList）
+	 *
 	 * @param runner
 	 * @param cls
 	 * @param sql
@@ -182,6 +173,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询指定列名的值（单条数据）
+	 *
 	 * @param runner
 	 * @param column
 	 * @param sql
@@ -202,6 +194,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询指定列名的值（多条数据）
+	 *
 	 * @param runner
 	 * @param column
 	 * @param sql
@@ -223,6 +216,7 @@ public class QueryHelper {
 
 	/**
 	 * 查询指定列名对应的记录映射
+	 *
 	 * @param runner
 	 * @param column
 	 * @param sql
@@ -244,8 +238,9 @@ public class QueryHelper {
 
 	/**
 	 * 更新（包括 UPDATE、INSERT、DELETE，返回受影响的行数）
+	 *
 	 * @param runner
-	 * @param conn
+	 * @param conn   可以为空
 	 * @param sql
 	 * @param params
 	 * @return
@@ -266,10 +261,32 @@ public class QueryHelper {
 		return result;
 	}
 
+
 	private static void printSQL(String sql) {
 //		if (logger.isDebugEnabled()) {
 //			logger.debug("SQL: " + sql);
 //		}
 		logger.debug("SQL: " + sql);
 	}
+
+	/**
+	 * 查询count
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	public static long queryCount(QueryRunner runner, String sql, Object... params) {
+		long count = 0;
+		try {
+			Number num = ((Number) runner.query(sql, scaleHandler, params)).intValue();
+			count = num == null ? -1 : num.longValue();
+			printSQL(sql);
+		} catch (SQLException e) {
+			logger.error(e.getMessage(), e);
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		return count;
+	}
+
 }

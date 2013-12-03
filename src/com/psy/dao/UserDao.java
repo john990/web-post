@@ -40,10 +40,11 @@ public class UserDao {
 
 	/**
 	 * 是否存在相应的用户名
+	 *
 	 * @param username
 	 * @return
 	 */
-	public static boolean hasUsername(String username){
+	public static boolean hasUsername(String username) {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		if (QueryHelper.queryCount(runner, SQL.HAVE_USER_NAME, username) != 0) {
 			return true;
@@ -53,10 +54,11 @@ public class UserDao {
 
 	/**
 	 * 检查邮箱是否存在
+	 *
 	 * @param email
 	 * @return
 	 */
-	public static boolean hasEmail(String email){
+	public static boolean hasEmail(String email) {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		if (QueryHelper.queryCount(runner, SQL.HAVE_USER_EMAIL, email) != 0) {
 			return true;
@@ -64,18 +66,19 @@ public class UserDao {
 		return false;
 	}
 
-	public static int addUser(RegUser user){
+	public static int addUser(RegUser user) {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		return QueryHelper.update(runner, null,SQL.ADD_USER,new String[]{user.getName(), Encipher.encrypt(user.getPassword()),user.getEmail(), User.TYPE_NORMAL});
+		return QueryHelper.update(runner, null, SQL.ADD_USER, new String[]{user.getName(), Encipher.encrypt(user.getPassword()), user.getEmail(), User.TYPE_NORMAL});
 	}
 
 	/**
 	 * 用户登录验证
+	 *
 	 * @return
 	 */
-	public static boolean validateUser(LoginUser user){
+	public static boolean validateUser(LoginUser user) {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		if (QueryHelper.queryCount(runner, SQL.VALIDATE_USER, new String[]{user.getName(),user.getName(), Encipher.encrypt(user.getPassword())}) != 0) {
+		if (QueryHelper.queryCount(runner, SQL.VALIDATE_USER, new String[]{user.getName(), user.getName(), Encipher.encrypt(user.getPassword())}) != 0) {
 			return true;
 		}
 		return false;

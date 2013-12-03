@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2013-11-28 18:49:43
+Date: 2013-12-03 07:24:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,9 +79,10 @@ CREATE TABLE `post` (
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
   `comment_count` int(11) DEFAULT '0',
-  `status` int(2) DEFAULT '1',
+  `status` int(2) DEFAULT '1' COMMENT '0:未审核\r\n1:正常\r\n9:已删除',
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `cover` int(11) DEFAULT NULL COMMENT '文章封面/预览',
   PRIMARY KEY (`Id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`Id`)
@@ -90,7 +91,7 @@ CREATE TABLE `post` (
 -- ----------------------------
 -- Records of post
 -- ----------------------------
-INSERT INTO `post` VALUES ('1', '1', '2', '资源应该有特殊标记如：<source:>source id</source>', '0', '1', '2013-11-24 19:41:53', '2013-11-24 19:46:22');
+INSERT INTO `post` VALUES ('1', '1', '2', '资源应该有特殊标记如：<source:>source id</source>', '0', '1', '2013-11-24 19:41:53', '2013-11-24 19:46:22', null);
 
 -- ----------------------------
 -- Table structure for post_category

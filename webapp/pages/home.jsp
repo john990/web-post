@@ -9,6 +9,8 @@
     <title>home</title>
 </head>
 <body>
+<a href="/login">login</a><br/>
+<a href="/reg">register</a><br/>
     <strong>hello.jsp</strong>
     <br/>
     <br/>

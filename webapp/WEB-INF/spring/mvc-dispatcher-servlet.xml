@@ -38,6 +38,11 @@
 		</beans:property>
 	</beans:bean>
 
+	<!-- 登录验证 -->
+	<mvc:interceptors>
+		<beans:bean class="com.psy.controller.authority.LoginAnnotationInterceptor"></beans:bean>
+	</mvc:interceptors>
+
 	<!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
 	<!--<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />-->
 

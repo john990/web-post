@@ -1,6 +1,8 @@
 package com.psy.controller.home;
 
 import com.psy.bean.User;
+import com.psy.controller.authority.Login;
+import com.psy.controller.authority.ResultTypeEnum;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

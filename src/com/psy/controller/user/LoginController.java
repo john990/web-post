@@ -35,7 +35,7 @@ import javax.validation.Valid;
 public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void login(ModelMap model) {
+	public void login() {
 	}
 
 	@ModelAttribute("user")

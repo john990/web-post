@@ -35,6 +35,7 @@ public class LoginAnnotationInterceptor extends HandlerInterceptorAdapter {
 		if (null == user) {
 			// 需要登录
 			if (login.value() == ResultTypeEnum.page) {
+				// TODO:跳转传递参数
 				response.sendRedirect("/login");
 			} else if (login.value() == ResultTypeEnum.json) {
 				//ajax页面的登录

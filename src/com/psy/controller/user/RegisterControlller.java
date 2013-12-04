@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -39,8 +40,8 @@ public class RegisterControlller {
 	}
 
 	@ModelAttribute("user")
-	public User createFormBean() {
-		return new User();
+	public RegUser createFormBean() {
+		return new RegUser();
 	}
 
 	@ModelAttribute
@@ -49,7 +50,7 @@ public class RegisterControlller {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(@Valid RegUser user, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
+	public String processSubmit(HttpSession session,@Valid RegUser user, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
 			JSONArray jsonArray = new JSONArray();
@@ -80,7 +81,13 @@ public class RegisterControlller {
 			return "redirect:/reg";
 		}
 
-		if (UserDao.addUser(user) > 0) {
+		int userId = UserDao.addUser(user);
+		if (userId > 0) {
+			User sessionUser = new User();
+			sessionUser.setId(userId);
+			sessionUser.setName(user.getName());
+			sessionUser.setEmail(user.getEmail());
+			session.setAttribute("user",sessionUser);
 			redirectAttrs.addFlashAttribute("success", "注册成功");
 			return "redirect:/success";
 		}

@@ -289,4 +289,29 @@ public class QueryHelper {
 		return count;
 	}
 
+	/**
+	 * 查询数字类型
+	 * @param runner
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	public static long queryNumber(QueryRunner runner, Connection conn,String sql, Object... params) {
+		long result = 0;
+		try {
+			Number num = null;
+			if (conn != null) {
+				num = ((Number) runner.query(conn,sql,scaleHandler, params)).intValue();
+			} else {
+				num = ((Number) runner.query(sql, scaleHandler, params)).intValue();
+			}
+			result = num == null ? -1 : num.longValue();
+			printSQL(sql);
+		} catch (SQLException e) {
+			logger.error(e.getMessage(), e);
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		return result;
+	}
+
 }

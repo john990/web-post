@@ -4,11 +4,16 @@
 <c:set var="pageContext" value="${pageContext}"/>
 <!DOCTYPE html>
 <html>
+<head>
+    <%@include file="head.html"%>
+    <title>home</title>
+</head>
 <body>
     <strong>hello.jsp</strong>
     <br/>
     <br/>
     <span>base:${BASE}</span>
-	<h1>${message}</h1>
+	<p>${message}</p>
+    <p>${user.name}</p>
 </body>
 </html>

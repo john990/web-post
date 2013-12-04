@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -48,7 +49,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(@Valid LoginUser user, BindingResult result,
+	public String processSubmit(HttpSession session,@Valid LoginUser user, BindingResult result,
 	                            @ModelAttribute("ajaxRequest") boolean ajaxRequest,
 	                            Model model, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
@@ -63,7 +64,9 @@ public class LoginController {
 			redirectAttrs.addFlashAttribute("user", user);
 			return "redirect:/login";
 		}
-		if(UserDao.validateUser(user)){
+		User sessionUser = UserDao.validateUser(user);
+		if(sessionUser != null && sessionUser.getId()!=0){
+			session.setAttribute("user",sessionUser);
 			redirectAttrs.addFlashAttribute("success", "登陆成功");
 			return "redirect:/success";
 		}else{

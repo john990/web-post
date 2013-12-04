@@ -3,6 +3,7 @@ package com.psy.dao;
 import com.psy.base.db.DBManager;
 import com.psy.base.db.QueryHelper;
 import com.psy.base.security.Encipher;
+import com.psy.base.utils.StringUtils;
 import com.psy.bean.User;
 import com.psy.common.Msg;
 import com.psy.common.SQL;
@@ -10,6 +11,9 @@ import com.psy.controller.user.LoginUser;
 import com.psy.controller.user.RegUser;
 
 import org.apache.commons.dbutils.QueryRunner;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Created by kai.wang on 12/3/13.
@@ -39,7 +43,7 @@ public class UserDao {
 	}
 
 	/**
-	 * 是否存在相应的用户名
+	 * 是否存在相同的用户名
 	 *
 	 * @param username
 	 * @return
@@ -66,9 +70,23 @@ public class UserDao {
 		return false;
 	}
 
+	/**
+	 * 添加新用户
+	 *
+	 * @param user
+	 * @return user id
+	 */
 	public static int addUser(RegUser user) {
-		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		return QueryHelper.update(runner, null, SQL.ADD_USER, new String[]{user.getName(), Encipher.encrypt(user.getPassword()), user.getEmail(), User.TYPE_NORMAL});
+		Connection connection = null;
+		try {
+			connection = DBManager.getDataSource().getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		QueryRunner runner = new QueryRunner();
+		QueryHelper.update(runner, connection, SQL.ADD_USER, new String[]{user.getName(), Encipher
+				.encrypt(user.getPassword()), user.getEmail(), User.TYPE_NORMAL});
+		return (int)QueryHelper.queryNumber(runner,connection,SQL.LAST_INSERT_ID,new String[]{});
 	}
 
 	/**
@@ -76,12 +94,27 @@ public class UserDao {
 	 *
 	 * @return
 	 */
-	public static boolean validateUser(LoginUser user) {
+	public static User validateUser(LoginUser loginUser) {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		if (QueryHelper.queryCount(runner, SQL.VALIDATE_USER, new String[]{user.getName(), user.getName(), Encipher.encrypt(user.getPassword())}) != 0) {
-			return true;
+
+		User user = QueryHelper.queryBean(runner, User.class, null, SQL.VALIDATE_USER, new String[]{loginUser
+				.getName(), loginUser.getName(), Encipher.encrypt(loginUser.getPassword())});
+		return user;
+	}
+
+	/**
+	 *
+	 * @param username
+	 * @return
+	 */
+	public static int findUserIdByName(String username) {
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		User user = QueryHelper
+				.queryBean(runner, User.class, null, SQL.FIND_USERID_BY_USERNAME, username);
+		if (user != null ) {
+			return user.getId();
 		}
-		return false;
+		return 0;
 	}
 
 }

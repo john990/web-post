@@ -1,10 +1,13 @@
 package com.psy.controller.home;
 
+import com.psy.bean.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by kai on 12/4/13.<br/>
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class HomeController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String home(ModelMap model) {
+	public String home(HttpSession session,ModelMap model) {
 		model.addAttribute("message","首页，HomeController.home");
-		return "hello";
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("user",user);
+		return "home";
 	}
 }

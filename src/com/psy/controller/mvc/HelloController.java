@@ -18,18 +18,18 @@ import java.util.List;
 @RequestMapping()
 public class HelloController {
 
-	@RequestMapping(value = "hello", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "Hello world!");
-		System.out.println("action:hello");
-		String sql = "select * from user where id > ?";
-		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
-		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "0");
-		for (User user : users) {
-			System.out.println(user.getName());
-		}
-		return "hello";
-	}
+//	@RequestMapping(value = "hello", method = RequestMethod.GET)
+//	public String printWelcome(ModelMap model) {
+//		model.addAttribute("message", "Hello world!");
+//		System.out.println("action:hello");
+//		String sql = "select * from user where id > ?";
+//		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+//		List<User> users = QueryHelper.queryBeanList(runner, User.class, sql, "0");
+//		for (User user : users) {
+//			System.out.println(user.getName());
+//		}
+//		return "hello";
+//	}
 
 //	@RequestMapping(value = "bean", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 //	public @ResponseBody JavaBean[] printJson() {

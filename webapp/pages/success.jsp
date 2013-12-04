@@ -12,5 +12,13 @@
 </head>
 <body>
 ${success}
+<p>一秒后跳转到首页</p>
+<%
+//    int waitTime = 1000;
+//    String url = "/";
+//    String content=waitTime+";URL="+url;
+//    response.setHeader("REFRESH",content);
+    response.sendRedirect("/");
+%>
 </body>
 </html>

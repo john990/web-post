@@ -7,10 +7,8 @@
 <body>
     <strong>hello.jsp</strong>
     <br/>
-    <span>pageContext:${pageContext.request}</span>
     <br/>
     <span>base:${BASE}</span>
-123123
 	<h1>${message}</h1>
 </body>
 </html>

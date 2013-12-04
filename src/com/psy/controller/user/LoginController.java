@@ -65,7 +65,7 @@ public class LoginController {
 		}
 		if(UserDao.validateUser(user)){
 			redirectAttrs.addFlashAttribute("success", "登陆成功");
-			return "redirect:/login";
+			return "redirect:/success";
 		}else{
 			redirectAttrs.addFlashAttribute("error", "用户名或密码错误");
 			return "redirect:/login";

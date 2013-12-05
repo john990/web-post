@@ -3,6 +3,7 @@ package com.psy.controller.user;
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
 import com.psy.common.Msg;
+import com.psy.common.SessionAttribute;
 import com.psy.dao.UserDao;
 
 import org.json.JSONArray;
@@ -32,14 +33,14 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/reg")
-@SessionAttributes("user")
+@SessionAttributes(SessionAttribute.USER)
 public class RegisterControlller {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void reg(ModelMap model) {
 	}
 
-	@ModelAttribute("user")
+	@ModelAttribute(SessionAttribute.USER)
 	public RegUser createFormBean() {
 		return new RegUser();
 	}
@@ -87,7 +88,7 @@ public class RegisterControlller {
 			sessionUser.setId(userId);
 			sessionUser.setName(user.getName());
 			sessionUser.setEmail(user.getEmail());
-			session.setAttribute("user",sessionUser);
+			session.setAttribute(SessionAttribute.USER,sessionUser);
 			redirectAttrs.addFlashAttribute("success", "注册成功");
 			return "redirect:/success";
 		}

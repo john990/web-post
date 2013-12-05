@@ -19,6 +19,7 @@
 <div class="container">
     <p id="formsContent">${error}</p>
     <p>${success}</p>
+    <p style="color: red;">${message}</p>
     <form:form id="form" role="form" method="post" modelAttribute="user" class="form-horizontal"
                autocomplete="false"
                data-validator-option="{theme:'simple_right'}">

@@ -1,6 +1,7 @@
 package com.psy.controller.home;
 
 import com.psy.bean.User;
+import com.psy.common.BeanUtils;
 import com.psy.controller.authority.Login;
 import com.psy.controller.authority.ResultTypeEnum;
 
@@ -16,14 +17,16 @@ import javax.servlet.http.HttpSession;
  * Function :
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping()
 public class HomeController {
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "home",method = RequestMethod.GET)
 	public String home(HttpSession session,ModelMap model) {
 		model.addAttribute("message","首页，HomeController.home");
 		User user = (User) session.getAttribute("user");
-		model.addAttribute("user",user);
+		if(!BeanUtils.isEmptyUser(user)){
+			model.addAttribute("user",user);
+		}
 		return "home";
 	}
 }

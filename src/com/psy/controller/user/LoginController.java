@@ -2,6 +2,8 @@ package com.psy.controller.user;
 
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
+import com.psy.common.Msg;
+import com.psy.common.SessionAttribute;
 import com.psy.dao.UserDao;
 
 import org.json.JSONArray;
@@ -31,14 +33,28 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/login")
-@SessionAttributes("user")
+@SessionAttributes(SessionAttribute.USER)
 public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void login() {
+	public String login(HttpSession session, ModelMap model) {
+		// 已经登录
+		User user = (User) session.getAttribute(SessionAttribute.USER);
+		if (user != null && user.getId() > 0) {
+			return "redirect:/home";
+		}
+
+		// 需要登录的页面跳转
+		Object needLogin = session.getAttribute(SessionAttribute.NEED_LOGIN);
+		if (needLogin != null) {
+			model.addAttribute("message", Msg.NEED_LOGIN_AUTHORITY);
+			session.removeAttribute(SessionAttribute.NEED_LOGIN);
+			return "";
+		}
+		return "login";
 	}
 
-	@ModelAttribute("user")
+	@ModelAttribute(SessionAttribute.USER)
 	public User createFormBean() {
 		return new User();
 	}
@@ -48,10 +64,11 @@ public class LoginController {
 		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request));
 	}
 
-	@RequestMapping(method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(HttpSession session,@Valid LoginUser user, BindingResult result,
-	                            @ModelAttribute("ajaxRequest") boolean ajaxRequest,
-	                            Model model, RedirectAttributes redirectAttrs) throws JSONException {
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String processSubmit(HttpSession session,
+	                            @Valid LoginUser user, BindingResult result,
+	                            @ModelAttribute("ajaxRequest")
+	                            boolean ajaxRequest, Model model, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
 			JSONArray jsonArray = new JSONArray();
@@ -65,11 +82,11 @@ public class LoginController {
 			return "redirect:/login";
 		}
 		User sessionUser = UserDao.validateUser(user);
-		if(sessionUser != null && sessionUser.getId()!=0){
-			session.setAttribute("user",sessionUser);
+		if (sessionUser != null && sessionUser.getId() != 0) {
+			session.setAttribute(SessionAttribute.USER, sessionUser);
 			redirectAttrs.addFlashAttribute("success", "登陆成功");
 			return "redirect:/success";
-		}else{
+		} else {
 			redirectAttrs.addFlashAttribute("error", "用户名或密码错误");
 			return "redirect:/login";
 		}

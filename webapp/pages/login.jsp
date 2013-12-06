@@ -25,7 +25,7 @@
                data-validator-option="{theme:'simple_right'}">
         <fieldset>
             <div class="form-group">
-                <label class="col-sm-2 control-label">用户名：</label>
+                <span class="col-sm-2 control-label">用户名：</span>
 
                 <div class="col-sm-5">
                     <form:input class="form-control" path="name"
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">密码：</label>
+                <span class="col-sm-2 control-label">密码：</span>
 
                 <div class="col-sm-10">
                     <form:password class="form-control" path="password"

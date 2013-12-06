@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">用户名：</label>
 
-                <div class="col-sm-10">
+                <div class="col-sm-5">
                     <form:input class="form-control" path="name"
                                 data-rule="用户名:required;username" placeholder="用户名" value="${user.name}"/>
                 </div>

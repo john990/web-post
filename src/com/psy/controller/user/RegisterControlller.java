@@ -18,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -50,8 +51,37 @@ public class RegisterControlller {
 		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request));
 	}
 
+	// 检查用户名是否注册
+	@RequestMapping(value = "/has_user_name",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody JSONObject hasUsername(RegUser user) throws JSONException {
+		JSONObject json = new JSONObject();
+		if (UserDao.hasUsername(user.getName())) {
+			json.put("code", "error");
+			json.put("message", Msg.USERNAME_ALREADY_REG);
+			return json;
+		}
+		json.put("code","ok");
+		return json;
+	}
+
+	// 检查邮箱是否注册
+	@RequestMapping(value = "/has_user_email",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody JSONObject hasEmail(RegUser user) throws JSONException {
+		JSONObject json = new JSONObject();
+		if (UserDao.hasEmail(user.getEmail())) {
+			json.put("code", "error");
+			json.put("message", Msg.EMAIL_ALREADY_REG);
+			return json;
+		}
+		json.put("code","ok");
+		return json;
+	}
+
+	// 注册验证及添加数据库
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(HttpSession session,@Valid RegUser user, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
+	public String processSubmit(HttpSession session,
+	                            @Valid
+	                            RegUser user, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
 			JSONArray jsonArray = new JSONArray();
@@ -88,7 +118,7 @@ public class RegisterControlller {
 			sessionUser.setId(userId);
 			sessionUser.setName(user.getName());
 			sessionUser.setEmail(user.getEmail());
-			session.setAttribute(SessionAttribute.USER,sessionUser);
+			session.setAttribute(SessionAttribute.USER, sessionUser);
 			redirectAttrs.addFlashAttribute("success", "注册成功");
 			return "redirect:/success";
 		}

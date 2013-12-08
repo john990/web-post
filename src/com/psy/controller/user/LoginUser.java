@@ -9,18 +9,19 @@ import javax.validation.constraints.Size;
  */
 public class LoginUser {
 
-	@Size(min = 3, max = 15, message = "用户名长度不正确")
-	private String name;
+	@Size(min = 3, max = 30, message = "邮箱长度不正确")
+	@Email
+	private String email;
 
 	@Size(min = 6, max = 20, message = "密码长度不正确")
 	private String password;
 
-	public String getName() {
-		return name;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

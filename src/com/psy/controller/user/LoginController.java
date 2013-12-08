@@ -2,6 +2,7 @@ package com.psy.controller.user;
 
 import com.psy.base.utils.AjaxUtils;
 import com.psy.bean.User;
+import com.psy.common.BeanUtils;
 import com.psy.common.Msg;
 import com.psy.common.SessionAttribute;
 import com.psy.dao.UserDao;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,9 +41,12 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String login(HttpSession session, ModelMap model) {
 		// 已经登录
-		User user = (User) session.getAttribute(SessionAttribute.USER);
-		if (user != null && user.getId() > 0) {
-			return "redirect:/home";
+		Object sessionUser = session.getAttribute(SessionAttribute.USER);
+		if(sessionUser != null && sessionUser instanceof User){
+			User user = (User)sessionUser;
+			if(!BeanUtils.isEmptyUser(user)){
+				return "redirect:/home";
+			}
 		}
 
 		// 需要登录的页面跳转
@@ -71,14 +76,12 @@ public class LoginController {
 	                            boolean ajaxRequest, Model model, RedirectAttributes redirectAttrs) throws JSONException {
 		if (result.hasErrors()) {
 			List<FieldError> filedErrors = result.getFieldErrors();
-			JSONArray jsonArray = new JSONArray();
+			JSONObject jsonObject = new JSONObject();
 			for (FieldError error : filedErrors) {
-				JSONObject jsonObject = new JSONObject();
 				jsonObject.put(error.getField(), error.getDefaultMessage());
-				jsonArray.put(jsonObject);
 			}
-			redirectAttrs.addFlashAttribute("error", jsonArray);
 			redirectAttrs.addFlashAttribute("user", user);
+			redirectAttrs.addFlashAttribute("error", jsonObject);
 			return "redirect:/login";
 		}
 		User sessionUser = UserDao.validateUser(user);
@@ -87,7 +90,10 @@ public class LoginController {
 			redirectAttrs.addFlashAttribute("success", "登陆成功");
 			return "redirect:/success";
 		} else {
-			redirectAttrs.addFlashAttribute("error", "用户名或密码错误");
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("validate","邮箱或密码错误");
+			redirectAttrs.addFlashAttribute("error", jsonObject);
+			redirectAttrs.addFlashAttribute("user", user);
 			return "redirect:/login";
 		}
 	}

@@ -2,6 +2,7 @@ package com.psy.controller.home;
 
 import com.psy.bean.User;
 import com.psy.common.BeanUtils;
+import com.psy.common.SessionAttribute;
 import com.psy.controller.authority.Login;
 import com.psy.controller.authority.ResultTypeEnum;
 
@@ -23,9 +24,12 @@ public class HomeController {
 	@RequestMapping(value = "home",method = RequestMethod.GET)
 	public String home(HttpSession session,ModelMap model) {
 		model.addAttribute("message","首页，HomeController.home");
-		User user = (User) session.getAttribute("user");
-		if(!BeanUtils.isEmptyUser(user)){
-			model.addAttribute("user",user);
+		Object sessionUser = session.getAttribute(SessionAttribute.USER);
+		if(sessionUser != null && sessionUser instanceof User){
+			User user = (User)sessionUser;
+			if(!BeanUtils.isEmptyUser(user)){
+				model.addAttribute("user",user);
+			}
 		}
 		return "home";
 	}

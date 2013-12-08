@@ -98,7 +98,7 @@ public class UserDao {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 
 		User user = QueryHelper.queryBean(runner, User.class, null, SQL.VALIDATE_USER, new String[]{loginUser
-				.getName(), loginUser.getName(), Encipher.encrypt(loginUser.getPassword())});
+				.getEmail(), Encipher.encrypt(loginUser.getPassword())});
 		return user;
 	}
 

@@ -6,8 +6,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
+    <%@include file="head.html" %>
     <title>new post</title>
 </head>
 <body>

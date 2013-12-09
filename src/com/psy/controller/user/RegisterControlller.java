@@ -97,11 +97,11 @@ public class RegisterControlller {
 
 		// 检查用户名/邮箱是否存在
 		JSONArray errors = new JSONArray();
-		if (UserDao.hasUsername(user.getName())) {
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("username", Msg.USERNAME_ALREADY_REG);
-			errors.put(jsonObject);
-		}
+//		if (UserDao.hasUsername(user.getName())) {
+//			JSONObject jsonObject = new JSONObject();
+//			jsonObject.put("username", Msg.USERNAME_ALREADY_REG);
+//			errors.put(jsonObject);
+//		}
 		if (UserDao.hasEmail(user.getEmail())) {
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("email", Msg.EMAIL_ALREADY_REG);

@@ -11,11 +11,11 @@
 <body>
 <a href="/login">login</a><br/>
 <a href="/reg">register</a><br/>
+<a href="/new/post">new post</a><br/>
     <strong>hello.jsp</strong>
     <br/>
     <br/>
     <span>base:${BASE}</span>
-	<p>${message}</p>
-    <p>${user.name}</p>
+    <p>${user.email}</p>
 </body>
 </html>

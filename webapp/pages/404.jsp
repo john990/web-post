@@ -8,11 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="head.html"%>
+    <%@include file="head.html" %>
     <title>404</title>
 </head>
 <body>
-    404.jsp
-    <h1>404</h1>
+<h1>404</h1>
+404.jsp
 </body>
 </html>

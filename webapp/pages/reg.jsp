@@ -24,11 +24,19 @@
                data-validator-option="{theme:'simple_right'}">
         <fieldset>
             <div class="form-group">
+                <label class="col-sm-2 control-label">邮箱：</label>
+
+                <div class="col-sm-10">
+                    <form:input class="form-control" path="email"
+                                data-rule="邮箱:required;email" placeholder="邮箱" value="${user.email}"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-sm-2 control-label">用户名：</label>
 
                 <div class="col-sm-10">
                     <form:input class="form-control" path="name"
-                                data-rule="用户名:required;username" placeholder="用户名" value="${user.name}"/>
+                                data-rule="用户名:required;name" placeholder="用户名" value="${user.name}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -37,14 +45,6 @@
                 <div class="col-sm-10">
                     <form:password class="form-control" path="password"
                                 data-rule="用户名:required;password" placeholder="密码" value=""/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">邮箱：</label>
-
-                <div class="col-sm-10">
-                    <form:input class="input" path="email" data-rule="邮箱:required;email"
-                                placeholder="EMAIL" value="${user.email}"/>
                 </div>
             </div>
         </fieldset>

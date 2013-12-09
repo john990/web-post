@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <%@include file="head.html" %>
@@ -15,11 +16,7 @@
 <body>
 <div id="login-container" class="container">
     <div class="col-lg-4 center">
-        <p id="formsContent"></p>
-
         <p>${success}</p>
-
-        <p style="color: red;">${message}</p>
         <form:form id="form" role="form" method="post" modelAttribute="user" class="form-horizontal"
                    autocomplete="false"
                    data-validator-option="{theme:'simple_right'}">
@@ -30,7 +27,7 @@
 
                     <div class="controls">
                         <form:input class="form-control top-space-2" path="email"
-                                    data-rule="邮箱:required;username" placeholder="邮箱"
+                                    data-rule="邮箱:required;email" placeholder="邮箱"
                                     value="${user.email}" />
                     </div>
                 </div>
@@ -44,10 +41,10 @@
                                        value="" />
                     </div>
                 </div>
-                <div id="error-wrap" class="control-group top-space-10">
-                    <span id="error-data" class="hide">${error}</span>
+                <div id="msg-wrap" class="control-group top-space-10">
+                    <span id="msg-data" class="hide">${message}</span>
 
-                    <p id="error" class="text-danger left-space-15"></p>
+                    <p id="message" class="text-danger left-space-15"></p>
                 </div>
                 <div class="control-group top-space-15">
                     <label class="control-label"></label>
@@ -63,7 +60,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         keepLoginCenter();
-        showError();
+        showMsg();
     });
     $(window).resize(function () {
         keepLoginCenter();
@@ -77,8 +74,8 @@
     }
 
     /** 显示错误信息 */
-    function showError() {
-        var json = JSON.parse($('#error-data').html());
+    function showMsg() {
+        var json = JSON.parse($('#msg-data').html());
         if (typeof (json) != 'undefined') {
             var error_str = '';
             var i = 0;
@@ -90,7 +87,7 @@
                 }
                 i++;
             }
-            $('#error').html(error_str);
+            $('#message').html(error_str);
         }
     }
 </script>

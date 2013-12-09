@@ -9,12 +9,22 @@ import javax.validation.constraints.Size;
  */
 public class LoginUser {
 
+	private String name;
+
 	@Size(min = 3, max = 30, message = "邮箱长度不正确")
-	@Email
+	@Email(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$", message = "邮箱格式不正确")
 	private String email;
 
 	@Size(min = 6, max = 20, message = "密码长度不正确")
 	private String password;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getEmail() {
 		return email;

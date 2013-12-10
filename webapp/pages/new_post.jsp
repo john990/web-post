@@ -44,22 +44,22 @@
                                 <form:input id="cover-url" class="hide"
                                             path="coverUrl"
                                             value="${post.coverUrl}"/>
-                                <form method="post" action="http://up.qiniu.com/"
+                                <form id="file-form" method="post" action="http://up.qiniu.com/"
                                       enctype="multipart/form-data">
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new">Select image</span>
                                         <span class="fileinput-exists">Change</span>
                                             <input id="cover-file" multiple="multiple" size="3"
+                                                   name="file"
                                                    type="file"
                                                    class="form-control top-space-2 filePrew"/>
                                     </span>
                                     <span id="file-name"
                                           class="fileinput-filename ">file-name</span>
-                                    <input name="key" type="hidden" value="<resource key>">
-                                    <input name="x:<custom_field_name>" type="hidden"
-                                           value="<custom value>">
+                                    <%--<input name="key" type="hidden" value="<resource key>">--%>
+                                    <%--<input name="x:<custom_field_name>" type="hidden"
+                                           value="<custom value>">--%>
                                     <input id="token" name="token" type="hidden" value="<token>">
-                                    <input type="button" id="file-upload" value="上传">
                                 </form>
                                 <span id="process"></span>
                             </div>
@@ -94,6 +94,24 @@
                 url: "/upload-token",
                 success: function (token) {
                     $('#token').val(token);
+                    qniu_upload();
+                },
+                dataType: "text"
+            });
+        }
+
+        function qniu_upload(){
+//            $('#file-form').submit();
+            $.ajax({
+                type: 'POST',
+                data: $('#file-form').serialize(),
+                async: false,
+                url: "http://up.qiniu.com/",
+                success: function (token) {
+                    qniu_upload();
+                },
+                error:function(str){
+                    alert(str);
                 },
                 dataType: "text"
             });

@@ -1,16 +1,10 @@
 package com.psy.controller.post;
 
-import com.psy.bean.User;
-import com.psy.common.SessionAttribute;
-import com.psy.controller.authority.Login;
-import com.psy.controller.user.LoginUser;
-import com.psy.dao.UserDao;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -70,7 +64,7 @@ public class CreatePostController {
 //			return "redirect:/new/post";
 //		}
 
-		return "redirect:/success";
+		return "redirect:/new/post";
 	}
 
 }

@@ -15,8 +15,10 @@
 <body>
 <div class="container">
     <div class="col-lg-10 center">
-        <form:form id="form" role="form" method="post" modelAttribute="post" class="form-horizontal"
-                   autocomplete="false"
+
+
+        <form:form id="form" role="form" method="post"
+                   modelAttribute="post" class="form-horizontal" autocomplete="false"
                    data-validator-option="{theme:'simple_right'}">
             <fieldset>
                 <div class="form-group">
@@ -24,8 +26,11 @@
                     <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;题目：</span>
 
                     <div class="col-sm-10">
-                        <form:input class="form-control top-space-2" path="title"
-                                    data-rule="题目:required;title" placeholder="题目"
+                        <form:input class="form-control top-space-2"
+                                    path="title"
+                                    name="title"
+                                    data-rule="题目:required;title"
+                                    placeholder="题目"
                                     value="${post.title}"/>
                     </div>
                 </div>
@@ -34,9 +39,32 @@
                     <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;封面：</span>
 
                     <div class="col-sm-10">
-                        <form:input type="" class="form-control top-space-2" path="coverUrl"
-                                    data-rule="封面:required;coverUrl" placeholder="封面"
-                                    value="${post.coverUrl}"/>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div>
+                                <form:input id="cover-url" class="hide"
+                                            path="coverUrl"
+                                            value="${post.coverUrl}"/>
+                                <form method="post" action="http://up.qiniu.com/"
+                                      enctype="multipart/form-data">
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileinput-new">Select image</span>
+                                        <span class="fileinput-exists">Change</span>
+                                            <input id="cover-file" multiple="multiple" size="3"
+                                                   type="file"
+                                                   class="form-control top-space-2 filePrew"/>
+                                    </span>
+                                    <span id="file-name"
+                                          class="fileinput-filename ">file-name</span>
+                                    <input name="key" type="hidden" value="<resource key>">
+                                    <input name="x:<custom_field_name>" type="hidden"
+                                           value="<custom value>">
+                                    <input id="token" name="token" type="hidden" value="<token>">
+                                    <input type="button" id="file-upload" value="上传">
+                                </form>
+                                <span id="process"></span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="form-group top-space-15">
@@ -49,5 +77,29 @@
         </form:form>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        var file;
+        $("#cover-file").change(function () {
+            file = document.getElementById("cover-file").files[0];
+            $("#file-name").html(file.name + ",size:" + file.size);
+            $("#cover-url").val(file.name);
+            getToken();
+        });
+
+        /** 获取七牛TOKEN */
+        function getToken() {
+            $.ajax({
+                type: 'POST',
+                url: "/upload-token",
+                success: function (token) {
+                    $('#token').val(token);
+                },
+                dataType: "text"
+            });
+        }
+
+    });
+</script>
 </body>
 </html>

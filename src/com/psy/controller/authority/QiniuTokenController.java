@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping()
 public class QiniuTokenController {
-	@RequestMapping(value = "upload-token",method = RequestMethod.POST)
-	public @ResponseBody
-	String getQiniuUptoken(ModelMap model) throws AuthException, JSONException {
-		Mac mac = new Mac(Config.ACCESS_KEY, Config.SECRET_KEY);
+	@RequestMapping(value = "upload-token", method = RequestMethod.POST)
+	@ResponseBody
+	public String getQiniuUptoken(ModelMap model) throws AuthException, JSONException {
+		Mac mac = new Mac(Const.ACCESS_KEY, Const.SECRET_KEY);
 		// 请确保该bucket已经存在
 		String bucketName = Const.BUCKET_NAME;
 		PutPolicy putPolicy = new PutPolicy(bucketName);

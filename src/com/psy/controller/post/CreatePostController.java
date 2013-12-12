@@ -64,6 +64,9 @@ public class CreatePostController {
 //			return "redirect:/new/post";
 //		}
 
+		// TODO delete
+		redirectAttrs.addFlashAttribute("post", post);
+
 		return "redirect:/new/post";
 	}
 

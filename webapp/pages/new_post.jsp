@@ -10,28 +10,27 @@
 <html>
 <head>
     <%@include file="head.html" %>
+    <script type="text/javascript" src="/resources/js/page/new-post.js"></script>
     <title>new post</title>
 </head>
 <body>
 <div class="container">
     <div class="col-lg-10 center">
+    <!-- 文章表單 -->
+    <form:form id="form" role="form"  method="post"
+               modelAttribute="post" cssClass="hide1" autocomplete="false">
+        <form:hidden id="title" class="form-control top-space-2" path="title" name="title" data-rule="题目:required;title" value="${post.title}"/>
+        <form:hidden id="cover-url" path="coverUrl" value="${post.coverUrl}"/>
+    </form:form>
 
-
-        <form:form id="form" role="form" method="post"
-                   modelAttribute="post" class="form-horizontal" autocomplete="false"
-                   data-validator-option="{theme:'simple_right'}">
+        <div class="form-horizontal" data-validator-option="{theme:'simple_right'}">
             <fieldset>
                 <div class="form-group">
                     <!-- Text input-->
                     <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;题目：</span>
 
                     <div class="col-sm-10">
-                        <form:input class="form-control top-space-2"
-                                    path="title"
-                                    name="title"
-                                    data-rule="题目:required;title"
-                                    placeholder="题目"
-                                    value="${post.title}"/>
+                        <input id="title-show" class="form-control top-space-2" path="title" name="title" data-rule="题目:required;title" placeholder="题目"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,30 +39,19 @@
 
                     <div class="col-sm-10">
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div>
-                                <form:input id="cover-url" class="hide"
-                                            path="coverUrl"
-                                            value="${post.coverUrl}"/>
-                                <form id="file-form" method="post" action="http://up.qiniu.com/"
-                                      enctype="multipart/form-data">
-                                    <span class="btn btn-default btn-file">
-                                        <span class="fileinput-new">Select image</span>
-                                        <span class="fileinput-exists">Change</span>
-                                            <input id="cover-file" multiple="multiple" size="3"
-                                                   name="file"
-                                                   type="file"
-                                                   class="form-control top-space-2 filePrew"/>
-                                    </span>
-                                    <span id="file-name"
-                                          class="fileinput-filename ">file-name</span>
-                                        <%--<input name="key" type="hidden" value="<resource key>">--%>
-                                        <%--<input name="x:<custom_field_name>" type="hidden"
-                                               value="<custom value>">--%>
-                                    <input id="token" name="token" type="hidden">
-                                    <input id="upload" type="button" value="upload">
-                                </form>
-                                <span id="process"></span>
-                            </div>
+                            <!-- 七牛表單 -->
+                             <form:form id="file-form" method="post" action="http://up.qiniu.com/" enctype="multipart/form-data" >
+                                <span class="btn btn-default btn-file">
+                                    <span class="fileinput-new">Select image</span>
+                                    <span class="fileinput-exists">Change</span>
+                                    <input id="cover-file" multiple="multiple" size="3" name="file" type="file" class="form-control top-space-2 filePrew"/>
+                                    <input id="token" name="token" type="hidden"/>
+                                </span>
+                                <span id="file-name" class="fileinput-filename">
+                                     file-name
+                                </span>
+                                <span id="cover-process" class=""></span>
+                             </form:form>
                         </div>
 
                     </div>
@@ -71,72 +59,12 @@
                 <div class="form-group top-space-15">
                     <!-- Button -->
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">发布</button>
+                        <button id="submit" type="button" class="btn btn-primary">发布</button>
                     </div>
                 </div>
             </fieldset>
-        </form:form>
+        </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        var file;
-        $("#cover-file").change(function () {
-            file = document.getElementById("cover-file").files[0];
-            $("#file-name").html(file.name + ",size:" + file.size);
-            $("#cover-url").val(file.name);
-            getToken();
-        });
-
-        /** 获取七牛TOKEN */
-        function getToken() {
-            $.ajax({
-                type: 'POST',
-                url: "/upload-token",
-                success: function (token) {
-                    $('#token').val(token);
-                    $("#file-form").submit();
-//                    qiniu_upload();
-                },
-                dataType: "text"
-            });
-        }
-
-//        $('#upload').click(function(){
-//            qiniu_upload();
-//            return false;
-//        });
-
-        $("#file-form").submit(function(){
-            $(this).ajaxSubmit({
-                uploadProgress: function (event, position, total, percentComplete) {
-                    alert(position);
-                },
-                success: function (data) {
-                    alert(data);
-                },
-                error: function (xhr) {
-                    alert(xhr);
-                }
-            });
-            return false;
-        });
-
-        function qiniu_upload() {
-            $("#file-form").ajaxSubmit({
-                uploadProgress: function (event, position, total, percentComplete) {
-                    alert(position);
-                },
-                success: function (data) {
-                    alert(data);
-                },
-                error: function (xhr) {
-                    alert(xhr);
-                }
-            });
-        }
-
-    });
-</script>
 </body>
 </html>

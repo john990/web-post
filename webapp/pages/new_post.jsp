@@ -56,6 +56,10 @@
 
                     </div>
                 </div>
+                <div class="form-group">
+                    <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;内容：</span>
+                    <textarea name="content" class="col-sm-10"></textarea>
+                </div>
                 <div class="form-group top-space-15">
                     <!-- Button -->
                     <div class="col-sm-offset-2 col-sm-10">
@@ -66,5 +70,14 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            ""
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table link image"
+    });
+</script>
 </body>
 </html>

@@ -9,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="head.html"%>
+    <%@include file="include/head.meta.html" %>
+    <%@include file="include/base.html" %>
     <title>注册</title>
 </head>
 

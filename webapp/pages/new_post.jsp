@@ -9,7 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="head.html" %>
+    <%@include file="include/head.meta.html" %>
+    <%@include file="include/base.html" %>
+    <%@include file="include/js.editor.html" %>
     <script type="text/javascript" src="/resources/js/page/new-post.js"></script>
     <title>new post</title>
 </head>

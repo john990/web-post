@@ -63,7 +63,7 @@ public class CreatePostController {
 		if(oriUser != null && !BeanUtils.isEmptyUser( user=(User)oriUser )){
 			post.setUserId(user.getId());
 			PostDao.addPost(post);
-			return "redirect:/home";
+			return "redirect:/success";
 		}else{
 			SessionUtils.addNeedLoginTip(session);
 			return "redirect:/login";

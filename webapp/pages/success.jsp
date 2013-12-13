@@ -9,7 +9,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <title></title>
+    <%@include file="include/head.meta.html" %>
+    <%@include file="include/base.html" %>
+    <title>${success}</title>
 </head>
 <body>
 ${success}

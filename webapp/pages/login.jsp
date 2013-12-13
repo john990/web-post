@@ -10,7 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="head.html" %>
+    <%@include file="include/head.meta.html" %>
+    <%@include file="include/base.html" %>
     <title>login</title>
 </head>
 <body>

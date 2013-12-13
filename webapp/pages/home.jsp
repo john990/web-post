@@ -12,6 +12,7 @@
 <a href="/login">login</a><br/>
 <a href="/reg">register</a><br/>
 <a href="/new/post">new post</a><br/>
+<a href="/logout">logout</a><br/>
     <strong>hello.jsp</strong>
     <br/>
     <br/>

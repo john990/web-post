@@ -16,4 +16,6 @@ public class Const {
 		Config.ACCESS_KEY = ACCESS_KEY;
 		Config.SECRET_KEY = SECRET_KEY;
 	}
+	/** 媒体文件域名前缀 */
+	public static final String SITE_PREFIX = "http://personal-demo.u.qiniudn.com/";
 }

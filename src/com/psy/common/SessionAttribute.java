@@ -9,4 +9,8 @@ public final class SessionAttribute {
 
 	/** 需要登录才能继续操作 */
 	public static final String NEED_LOGIN = "need_login";
+
+	/** 登陆前浏览的页面 */
+	public static final String PRV_URL_LOGIN = "PRVOJDALPP23IOJ";
+
 }

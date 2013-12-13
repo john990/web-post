@@ -3,6 +3,7 @@ package com.psy.controller.authority;
 import com.psy.bean.User;
 import com.psy.common.BeanUtils;
 import com.psy.common.SessionAttribute;
+import com.psy.common.SessionUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,10 +42,10 @@ public class LoginAnnotationInterceptor extends HandlerInterceptorAdapter {
 			if (BeanUtils.isEmptyUser(user)) {
 				// 需要登录
 				if (login.value() == ResultTypeEnum.page) {
-					session.setAttribute(SessionAttribute.NEED_LOGIN, "need");
-//					response.sendRedirect(request.getContextPath()+"/login");
+					SessionUtils.addNeedLoginTip(session);
+					session.setAttribute(SessionAttribute.PRV_URL_LOGIN,request.getRequestURL().toString());
 					response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-					response.setHeader("Location",request.getContextPath()+"/login");
+					response.setHeader("Location",request.getContextPath()+"/login?prv="+SessionAttribute.PRV_URL_LOGIN);
 				} else if (login.value() == ResultTypeEnum.json) {
 					reply(response);
 				}

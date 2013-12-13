@@ -13,8 +13,9 @@ public class FormPost {
 	@Size(min = 2,max=100,message = "标题长度不正确，2-50个字符")
 	private String title;
 	private String coverUrl;
+	private int cover;
 
-	@Min(value = 10,message = "内容太少了")
+	@Size(min=10,message = "内容太少了")
 	private String content;
 	private int commentCount;
 	private int status;
@@ -51,6 +52,14 @@ public class FormPost {
 
 	public void setCoverUrl(String coverUrl) {
 		this.coverUrl = coverUrl;
+	}
+
+	public int getCover() {
+		return cover;
+	}
+
+	public void setCover(int cover) {
+		this.cover = cover;
 	}
 
 	public String getContent() {

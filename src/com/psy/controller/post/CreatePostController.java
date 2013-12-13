@@ -1,6 +1,13 @@
 package com.psy.controller.post;
 
 
+import com.psy.bean.User;
+import com.psy.common.BeanUtils;
+import com.psy.common.SessionAttribute;
+import com.psy.common.SessionUtils;
+import com.psy.controller.authority.Login;
+import com.psy.dao.PostDao;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -25,7 +32,7 @@ import javax.validation.Valid;
 @RequestMapping("/new/post")
 public class CreatePostController {
 
-//	@Login
+	@Login
 	@RequestMapping(method = RequestMethod.GET)
 	public String createPost(ModelMap model) {
 		return "new_post";
@@ -51,23 +58,16 @@ public class CreatePostController {
 			return "redirect:/new/post";
 		}
 
-//		User sessionUser = UserDao.validateUser(user);
-//		if (sessionUser != null && sessionUser.getId() != 0) {
-//			session.setAttribute(SessionAttribute.USER, sessionUser);
-//			redirectAttrs.addFlashAttribute("message", "登陆成功");
-//			return "redirect:/success";
-//		} else {
-//			JSONObject jsonObject = new JSONObject();
-//			jsonObject.put("validate","邮箱或密码错误");
-//			redirectAttrs.addFlashAttribute("message", jsonObject);
-//			redirectAttrs.addFlashAttribute("post", user);
-//			return "redirect:/new/post";
-//		}
-
-		// TODO delete
-		redirectAttrs.addFlashAttribute("post", post);
-
-		return "redirect:/new/post";
+		Object oriUser = session.getAttribute(SessionAttribute.USER);
+		User user = null;
+		if(oriUser != null && !BeanUtils.isEmptyUser( user=(User)oriUser )){
+			post.setUserId(user.getId());
+			PostDao.addPost(post);
+			return "redirect:/home";
+		}else{
+			SessionUtils.addNeedLoginTip(session);
+			return "redirect:/login";
+		}
 	}
 
 }

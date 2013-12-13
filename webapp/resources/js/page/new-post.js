@@ -58,6 +58,7 @@ $(function () {
     // 加载默认值
     function load() {
         $('#title-show').val($('#title').val());
+        $('#content-show').html($('#content').val());
     }
 
 });

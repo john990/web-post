@@ -19,4 +19,8 @@ public class SQL {
 	public static final String FIND_USERID_BY_USERNAME = Read.readSql("find_userid_by_name.sql");
 	/** 获取刚刚insert数据的ID */
 	public static final String LAST_INSERT_ID = Read.readSql("last_insert_id.sql");
+	/** 添加文章 */
+	public static final String ADD_POST = Read.readSql("add_post.sql");
+	/** 添加添加媒体文件 */
+	public static final String ADD_META = Read.readSql("add_meta.sql");
 }

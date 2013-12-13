@@ -1,3 +1,4 @@
+<%@ page import="com.psy.common.SessionAttribute" %>
 <%--
   Created by IntelliJ IDEA.
   User: kai.wang
@@ -12,11 +13,19 @@
 </head>
 <body>
 ${success}
+${url}
 <%
-    out.print("2秒后跳转到首页");
     int waitTime = 2;
-    String url = "/";
-    String content=waitTime+";URL="+url;
+    Object url = session.getAttribute(SessionAttribute.PRV_URL_LOGIN);
+    String content = "";
+    if(url != null){
+        session.removeAttribute(SessionAttribute.PRV_URL_LOGIN);
+        content=waitTime+";URL="+url.toString();
+        out.print("2秒后跳转到登录之前页面");
+    }else{
+        out.print("2秒后跳转到首页");
+        content=waitTime+";URL=/";
+    }
     response.setHeader("REFRESH",content);
 %>
 </body>

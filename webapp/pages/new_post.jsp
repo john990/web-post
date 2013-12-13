@@ -21,6 +21,7 @@
                modelAttribute="post" cssClass="hide1" autocomplete="false">
         <form:hidden id="title" class="form-control top-space-2" path="title" name="title" data-rule="题目:required;title" value="${post.title}"/>
         <form:hidden id="cover-url" path="coverUrl" value="${post.coverUrl}"/>
+        <form:hidden id="content" path="content" value="${post.content}" />
     </form:form>
 
         <div class="form-horizontal" data-validator-option="{theme:'simple_right'}">
@@ -59,7 +60,7 @@
                 <div class="form-group">
                     <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;内容：</span>
                     <div class="col-sm-10">
-                        <textarea name="content"></textarea>
+                        <textarea id="content-show" class="content-show"></textarea>
                     </div>
                 </div>
                 <div class="form-group top-space-15">
@@ -75,7 +76,8 @@
 <script type="text/javascript">
     // tinymce初始化
     tinymce.init({
-        selector: "textarea",
+        mode : "textareas",
+        editor_selector :"content-show",
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
@@ -86,7 +88,12 @@
         menubar: false,
         width: '99%' ,
         autoresize_min_height: '400',
-        autoresize_max_height: '1500'
+        autoresize_max_height: '800',
+        setup : function(ed) {
+            ed.on('change', function(e) {
+                $('#content').val(ed.getContent());
+            })
+        }
     });
 </script>
 </body>

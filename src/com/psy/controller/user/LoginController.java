@@ -59,7 +59,6 @@ public class LoginController {
 		Object needLogin = session.getAttribute(SessionAttribute.NEED_LOGIN);
 		if (needLogin != null) {
 			model.addAttribute("message", Msg.NEED_LOGIN_AUTHORITY);
-			session.removeAttribute(SessionAttribute.NEED_LOGIN);
 			return "login";
 		}
 		return "login";
@@ -95,6 +94,7 @@ public class LoginController {
 		if (sessionUser != null && sessionUser.getId() != 0) {
 			session.setAttribute(SessionAttribute.USER, sessionUser);
 			redirectAttrs.addFlashAttribute("message", "登陆成功");
+			session.removeAttribute(SessionAttribute.NEED_LOGIN);
 			return "redirect:/success";
 		} else {
 			JSONObject jsonObject = new JSONObject();

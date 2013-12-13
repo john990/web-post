@@ -15,6 +15,7 @@
     <title>login</title>
 </head>
 <body>
+<%@include file="include/nav.jsp" %>
 <div id="login-container" class="container">
     <div class="col-lg-4 center">
         <p>${success}</p>

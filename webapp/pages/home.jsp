@@ -10,10 +10,7 @@
     <title>home</title>
 </head>
 <body>
-<a href="/login">login</a><br/>
-<a href="/reg">register</a><br/>
-<a href="/new/post">new post</a><br/>
-<a href="/logout">logout</a><br/>
+    <%@include file="include/nav.jsp" %>
     <strong>hello.jsp</strong>
     <br/>
     <br/>

@@ -1,26 +1,20 @@
-package com.psy.bean;
+package com.psy.bean.view;
 
 /**
- * Created by kai.wang on 12/9/13.
+ * Created by kai.wang on 12/13/13.
  */
-public class Post {
-	/** 未审核 */
-	public static final int STATUS_NOT_AUDIT = 0;
-	/** 正常 */
-	public static final int STATUS_NORMAL = 1;
-	/** 已删除 */
-	public static final int STATUS_DELETE = 9;
-
+public class ViewPost {
 	private int Id;
 	private int userId;
 	private String title;
-	private int cover;
+	private String cover;
 	private String content;
 	private int commentCount;
 	private int status;
 	private String createAt;
 	private String updateAt;
 	private String reference;
+	private String userName;
 
 	public int getId() {
 		return Id;
@@ -34,8 +28,8 @@ public class Post {
 		return userId;
 	}
 
-	public void setUserId(int user_id) {
-		this.userId = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getTitle() {
@@ -46,11 +40,11 @@ public class Post {
 		this.title = title;
 	}
 
-	public int getCover() {
+	public String getCover() {
 		return cover;
 	}
 
-	public void setCover(int cover) {
+	public void setCover(String cover) {
 		this.cover = cover;
 	}
 
@@ -100,5 +94,13 @@ public class Post {
 
 	public void setReference(String reference) {
 		this.reference = reference;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

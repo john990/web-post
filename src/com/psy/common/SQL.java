@@ -23,4 +23,6 @@ public class SQL {
 	public static final String ADD_POST = Read.readSql("add_post.sql");
 	/** 添加添加媒体文件 */
 	public static final String ADD_META = Read.readSql("add_meta.sql");
+	/** 根据状态查找文章 */
+	public static final String FIND_POST_BY_STATUS = Read.readSql("find_post_by_status.sql");
 }

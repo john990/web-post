@@ -58,7 +58,9 @@
                 </div>
                 <div class="form-group">
                     <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;内容：</span>
-                    <textarea name="content" class="col-sm-10"></textarea>
+                    <div class="col-sm-10">
+                        <textarea name="content"></textarea>
+                    </div>
                 </div>
                 <div class="form-group top-space-15">
                     <!-- Button -->
@@ -71,12 +73,20 @@
     </div>
 </div>
 <script type="text/javascript">
+    // tinymce初始化
     tinymce.init({
         selector: "textarea",
         plugins: [
-            ""
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu autoresize"
         ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table link image"
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        language : 'zh_CN',
+        menubar: false,
+        width: '99%' ,
+        autoresize_min_height: '400',
+        autoresize_max_height: '1500'
     });
 </script>
 </body>

@@ -1,0 +1,2 @@
+#根据状态计算文章数
+SELECT COUNT(1) FROM POST WHERE STATUS=?

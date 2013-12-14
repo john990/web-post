@@ -14,6 +14,7 @@ public class FormPost {
 	private String title;
 	private String coverUrl;
 	private int cover;
+	private String intro;
 
 	@Size(min=10,message = "内容太少了")
 	private String content;
@@ -60,6 +61,14 @@ public class FormPost {
 
 	public void setCover(int cover) {
 		this.cover = cover;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 
 	public String getContent() {

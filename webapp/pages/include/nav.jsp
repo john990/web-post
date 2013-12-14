@@ -7,6 +7,7 @@
         <li><a href="/login">login</a></li>
         <li><a href="/reg">register</a></li>
         <li><a href="/new/post">new post</a></li>
+        <li><a href="/manage/posts">manage</a></li>
         <%
             Object object = session.getAttribute(SessionAttribute.USER);
             if (object != null && !BeanUtils.isEmptyUser((User)object)) {

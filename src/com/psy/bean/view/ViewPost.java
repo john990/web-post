@@ -8,6 +8,7 @@ public class ViewPost {
 	private int userId;
 	private String title;
 	private String cover;
+	private String intro;
 	private String content;
 	private int commentCount;
 	private int status;
@@ -15,6 +16,7 @@ public class ViewPost {
 	private String updateAt;
 	private String reference;
 	private String userName;
+	private long count;
 
 	public int getId() {
 		return Id;
@@ -46,6 +48,14 @@ public class ViewPost {
 
 	public void setCover(String cover) {
 		this.cover = cover;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
 
 	public String getContent() {
@@ -102,5 +112,13 @@ public class ViewPost {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public long getCount() {
+		return count;
+	}
+
+	public void setCount(long count) {
+		this.count = count;
 	}
 }

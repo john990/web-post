@@ -34,7 +34,6 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/reg")
-@SessionAttributes(SessionAttribute.USER)
 public class RegisterControlller {
 
 	@RequestMapping(method = RequestMethod.GET)

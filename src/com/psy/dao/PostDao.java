@@ -45,8 +45,12 @@ public class PostDao {
 			post.setCover(cover);
 		}
 
-		// USER_ID,TITLE,COVER,CONTENT,STATUS
-		count += QueryHelper.update(runner,connection,SQL.ADD_POST, post.getUserId(),post.getTitle(),post.getCover(),post.getContent(), Post.STATUS_NOT_AUDIT);
+		int subLength = post.getContent().length() > 40 ? 40 : post.getContent().length();
+		post.setIntro(post.getContent().substring(0,subLength));
+		// USER_ID,TITLE,COVER,INTRO,CONTENT,STATUS
+		count += QueryHelper.update(
+				runner,connection,SQL.ADD_POST,
+				post.getUserId(),post.getTitle(),post.getCover(),post.getIntro(),post.getContent(), Post.STATUS_NOT_AUDIT);
 		return count;
 	}
 
@@ -63,5 +67,37 @@ public class PostDao {
 		int limitStart = (page-1)*perPage;
 		list = QueryHelper.queryBeanList(runner,ViewPost.class,SQL.FIND_POST_BY_STATUS,status,limitStart,perPage);
 		return list;
+	}
+
+	/**
+	 * 根据状态计算文章数
+	 * @param status
+	 * @return
+	 */
+	public static long countPostByStatus(int status){
+		List<ViewPost> list = null;
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		return QueryHelper.queryCount(runner,SQL.COUNT_POST_BY_STATUS,status);
+	}
+
+	/**
+	 * 批量修改文章状态
+	 * @param status
+	 * @return
+	 */
+	public static int changePostStatusByIds(Integer[] ids,int status){
+		if(ids == null || ids.length == 0){
+			return 0;
+		}
+		String strId = "";
+		for(int i=0;i<ids.length;i++){
+			if(i!=ids.length-1){
+				strId += ids[i] + ",";
+			}else{
+				strId += ids[i];
+			}
+		}
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		return QueryHelper.update(runner,null,SQL.CHANGE_POST_STATUS_BY_IDS,status,strId);
 	}
 }

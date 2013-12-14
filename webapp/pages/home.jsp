@@ -6,7 +6,7 @@
 <html>
 <head>
     <%@include file="include/head.meta.html" %>
-    <%@include file="include/base.html" %>
+    <%@include file="include/base.css.js.html" %>
     <title>home</title>
 </head>
 <body>

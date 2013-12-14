@@ -25,4 +25,8 @@ public class SQL {
 	public static final String ADD_META = Read.readSql("add_meta.sql");
 	/** 根据状态查找文章 */
 	public static final String FIND_POST_BY_STATUS = Read.readSql("find_post_by_status.sql");
+	/** 根据状态计算文章数 */
+	public static final String COUNT_POST_BY_STATUS = Read.readSql("count_post_by_status.sql");
+	/** 批量修改文章状态 */
+	public static final String CHANGE_POST_STATUS_BY_IDS = Read.readSql("change_post_status_by_ids.sql");
 }

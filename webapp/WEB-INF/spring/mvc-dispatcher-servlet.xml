@@ -51,5 +51,7 @@
 
 	<task:annotation-driven />
 
+	<mvc:annotation-driven />
+
 
 </beans:beans>

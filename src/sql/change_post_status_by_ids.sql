@@ -1,0 +1,2 @@
+#批量修改文章状态
+UPDATE POST SET STATUS=? WHERE ID IN (?);

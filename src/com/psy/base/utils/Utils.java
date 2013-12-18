@@ -18,7 +18,7 @@ public class Utils {
 		return true;
 	}
 
-	/** 是不是INT */
+	/** 转换为INT */
 	public static int toInt(Object object) {
 		int r = 0;
 		if (object == null) {

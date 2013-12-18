@@ -103,6 +103,12 @@ public class PostDao {
 		return QueryHelper.update(runner,null,SQL.CHANGE_POST_STATUS_BY_IDS,status,strId);
 	}
 
+	/**
+	 * 查找首页文章列表
+	 * @param page
+	 * @param perPage
+	 * @return
+	 */
 	public static List<HomePost> findHomePostList(int page,int perPage){
 		page = Utils.parsePage(page);
 		List<HomePost> list = null;

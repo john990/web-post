@@ -5,6 +5,7 @@ import com.psy.common.BeanUtils;
 import com.psy.common.SessionAttribute;
 import com.psy.controller.authority.Login;
 import com.psy.controller.authority.ResultTypeEnum;
+import com.psy.dao.PostDao;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +32,7 @@ public class HomeController {
 				model.addAttribute("user",user);
 			}
 		}
+		model.addAttribute("posts", PostDao.findHomePostList(1,20));
 		return "home";
 	}
 }

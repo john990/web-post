@@ -11,10 +11,15 @@
 </head>
 <body>
     <%@include file="include/nav.jsp" %>
-    <strong>hello.jsp</strong>
+    <strong>${message}</strong>
     <br/>
-    <br/>
-    <span>base:${BASE}</span>
     <p>${user.email}</p>
+    <c:if test="${not empty posts}">
+        <ul>
+            <c:forEach var="post" items="${posts}">
+                <li>${post}</li>
+            </c:forEach>
+        </ul>
+    </c:if>
 </body>
 </html>

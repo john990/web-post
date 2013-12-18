@@ -6,9 +6,11 @@ import com.psy.base.security.Encipher;
 import com.psy.base.utils.StringUtils;
 import com.psy.bean.Post;
 import com.psy.bean.User;
+import com.psy.bean.view.HomePost;
 import com.psy.bean.view.ViewPost;
 import com.psy.common.Const;
 import com.psy.common.SQL;
+import com.psy.common.Utils;
 import com.psy.controller.post.FormPost;
 import com.psy.controller.user.RegUser;
 
@@ -62,6 +64,7 @@ public class PostDao {
 	 * @return
 	 */
 	public static List<ViewPost> findPostByStatus(int status,int page,int perPage){
+		page = Utils.parsePage(page);
 		List<ViewPost> list = null;
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		int limitStart = (page-1)*perPage;
@@ -75,7 +78,6 @@ public class PostDao {
 	 * @return
 	 */
 	public static long countPostByStatus(int status){
-		List<ViewPost> list = null;
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		return QueryHelper.queryCount(runner,SQL.COUNT_POST_BY_STATUS,status);
 	}
@@ -99,5 +101,14 @@ public class PostDao {
 		}
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		return QueryHelper.update(runner,null,SQL.CHANGE_POST_STATUS_BY_IDS,status,strId);
+	}
+
+	public static List<HomePost> findHomePostList(int page,int perPage){
+		page = Utils.parsePage(page);
+		List<HomePost> list = null;
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		int limitStart = (page-1)*perPage;
+		list = QueryHelper.queryBeanList(runner,HomePost.class,SQL.FIND_HOME_POST_LIST,Post.STATUS_NORMAL,limitStart,perPage);
+		return list;
 	}
 }

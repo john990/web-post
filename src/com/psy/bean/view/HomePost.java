@@ -11,7 +11,7 @@ public class HomePost {
 //	U.NAME AS USERNAME,
 //	P.CREATE_AT AS TIME
 	private String id;
-	private String HEAD;
+	private String head;
 	private String title;
 	private String tag;
 	private String username;
@@ -25,12 +25,12 @@ public class HomePost {
 		this.id = id;
 	}
 
-	public String getHEAD() {
-		return HEAD;
+	public String getHead() {
+		return head;
 	}
 
-	public void setHEAD(String HEAD) {
-		this.HEAD = HEAD;
+	public void setHead(String head) {
+		this.head = head;
 	}
 
 	public String getTitle() {

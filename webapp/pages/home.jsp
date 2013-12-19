@@ -15,11 +15,17 @@
     <br/>
     <p>${user.email}</p>
     <c:if test="${not empty posts}">
-        <ul>
-            <c:forEach var="post" items="${posts}">
-                <li>${post}</li>
+        <ol class="articles" id="infinite-articles">
+            <c:forEach var="p" items="${posts}">
+                <li class="article">
+                    <div class="poster-avatar">
+                        <a href="#"><img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);" /></a>
+                    </div>
+                    <div class="inner-listing">
+                    </div>
+                </li>
             </c:forEach>
-        </ul>
+        </ol>
     </c:if>
 </body>
 </html>

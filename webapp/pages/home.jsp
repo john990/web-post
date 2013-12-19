@@ -11,9 +11,6 @@
 </head>
 <body>
     <%@include file="include/nav.jsp" %>
-    <strong>${message}</strong>
-    <br/>
-    <p>${user.email}</p>
     <c:if test="${not empty posts}">
         <ol class="articles" id="infinite-articles">
             <c:forEach var="p" items="${posts}">
@@ -22,6 +19,15 @@
                         <a href="#"><img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);" /></a>
                     </div>
                     <div class="inner-listing">
+                        <a href="/post/${p.id}">${p.title}</a>
+                        <div class="attr">
+                            <span class="tag">${p.tag}</span>
+                            <span class="time">${p.createAt}</span>
+                            <span class="user">${p.username}</span>
+                        </div>
+                    </div>
+                    <div class="count">
+                        <span>count</span>
                     </div>
                 </li>
             </c:forEach>

@@ -8,6 +8,7 @@
   height: 100%;
   overflow: hidden;
   border-right: 2px solid rgba(255, 255, 255, 0.85);
+  padding: 0px;
   padding-top: 5px;
 }
 .logo {
@@ -16,6 +17,7 @@
 .menu-list {
   color: #eeeeee;
   font-size: 18px;
+  margin-top: 20px;
 }
 .nav-link {
   position: relative;
@@ -63,7 +65,7 @@
   padding: 11px 4px 9px;
   color: #aaa;
   font-size: 18px;
-  width: 242px;
+  width: 100%;
 }
 .search-container .search-icon {
   position: absolute;

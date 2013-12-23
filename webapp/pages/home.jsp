@@ -14,20 +14,41 @@
 <body>
 <div>
     <%@include file="include/menu.jsp" %>
-    <div class="main-container col-sm-12">
-        <c:if test="${not empty posts}">
-        <ol>
-            <c:forEach var="p" items="${posts}">
-                <li class="article">
+    <div class="content-wrap pull-left">
+        <div class="main-container">
+            <c:if test="${not empty posts}">
+            <ol class="articles">
+                <c:forEach var="p" items="${posts}">
+                    <li class="article">
                     <div class="poster-avatar">
-                        <a href="#"><img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);" /></a>
+                        <a href="#">
+                            <img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);"/>
+                        </a>
                     </div>
-                    <div class="inner-listing">
+                    <div class="article-info">
+                        <div class="title">
+                            <a href="#"><span>${p.title}</span></a>
+                        </div>
+                        <div class="minor">
+                            <span class="tag">
+                                <i class="fa fa-tag"></i><span><strong><a href="#">${p.tag}</a></strong></span>
+                            </span>
+                            <span class="posted-by">
+                                <i class="fa fa-user"></i><a href="#"><span>${p.username}</span></a>
+                            </span>
+                            <span class="posted-time">
+                                <i class="fa fa-clock-o"></i><span>${p.createAt}</span>
+                            </span>
+
+                        </div>
                     </div>
                 </li>
-            </c:forEach>
-        </ol>
-    </c:if>
+                </c:forEach>
+
+            </ol>
+        </c:if>
+        </div>
+        <div class="slider">aa</div>
     </div>
 </div>
 </body>

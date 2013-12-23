@@ -39,13 +39,3 @@ body {
 .left-space-20 {
   margin-left: 20px;
 }
-.poster-avatar {
-  position: absolute;
-  top: 12px;
-  left: 9px;
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}

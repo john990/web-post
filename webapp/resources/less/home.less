@@ -1,7 +1,86 @@
-.main-container {
+@import "variables";
+
+.content-wrap{
+  padding: 0px;
   min-height: 100%;
   position: relative;
-  margin-left: 260px;
+}
+.main-container {
+  margin-left: @menu-margin;
+  margin-right: @slider-margin;
   margin-top: 5px;
-  background: #EEE8F4;
+  float: left;
+}
+
+.articles {
+  list-style: none;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.articles .article {
+  display: block;
+  padding: 11px 0 8px 0;
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.articles > li:first-child{
+  border-top: none;
+}
+
+.articles .article .poster-avatar {
+  position: absolute;
+  top: 12px;
+  left: 9px;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.articles .article .article-info {
+  margin: 0 125px 0 59px;
+  height: 42px;
+  overflow: hidden;
+}
+
+.articles .article .article-info a.title {
+  display: inline-block;
+  max-width: 90%;
+  font-size: @font-size-h3;
+  color: @gray-dark;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding-left: 22px;
+}
+
+.articles .article .article-info .minor {
+  color: @gray-light;
+  font-size: @font-size-base;
+}
+
+.articles .article .article-info .minor a{
+  margin-right: 8px;
+}
+
+.articles .article .article-info .minor i{
+  margin-right: 4px;
+}
+
+.slider{
+  width: @slider-width;
+  background: #039453;
+  float: left;
 }

@@ -8,7 +8,7 @@
     <div class="search-container">
         <div class="search-icon">
             <a href="/" onclick="$('.form-search').submit(); return false;">
-                <i class="icon-search"></i>
+                <i class="fa fa-search"></i>
             </a>
         </div>
         <form class="form-search" action="http://www.inbound.org/articles/all/hot"

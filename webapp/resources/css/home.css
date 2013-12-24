@@ -1,13 +1,16 @@
 .content-wrap {
-  padding: 0px;
   min-height: 100%;
   position: relative;
+  margin-left: 260px;
 }
 .main-container {
-  margin-left: 260px;
-  margin-right: 260px;
-  margin-top: 5px;
   float: left;
+  width: 100%;
+  margin-right: -260px;
+}
+.main {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 260px;
 }
 .articles {
   list-style: none;

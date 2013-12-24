@@ -12,44 +12,43 @@
     <title>home</title>
 </head>
 <body>
-<div>
     <%@include file="include/menu.jsp" %>
-    <div class="content-wrap pull-left">
+    <div class="content-wrap">
         <div class="main-container">
-            <c:if test="${not empty posts}">
-            <ol class="articles">
-                <c:forEach var="p" items="${posts}">
-                    <li class="article">
-                    <div class="poster-avatar">
-                        <a href="#">
-                            <img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);"/>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <div class="title">
-                            <a href="#"><span>${p.title}</span></a>
-                        </div>
-                        <div class="minor">
-                            <span class="tag">
-                                <i class="fa fa-tag"></i><span><strong><a href="#">${p.tag}</a></strong></span>
-                            </span>
-                            <span class="posted-by">
-                                <i class="fa fa-user"></i><a href="#"><span>${p.username}</span></a>
-                            </span>
-                            <span class="posted-time">
-                                <i class="fa fa-clock-o"></i><span>${p.createAt}</span>
-                            </span>
+            <div class="main">
+                <c:if test="${not empty posts}">
+                    <ol class="articles">
+                        <c:forEach var="p" items="${posts}">
+                            <li class="article">
+                            <div class="poster-avatar">
+                                <a href="#">
+                                    <img src="http://personal-demo.u.qiniudn.com/FqfsMLeewqw_7EIk6t1r2app3Gvx" class="img-responsive" onerror="defaultAvatar(this);"/>
+                                </a>
+                            </div>
+                            <div class="article-info">
+                                <div class="title">
+                                    <a href="#"><span>这里能看大家跑了多少分，目前最多的跑了4000w分。。。</span></a>
+                                </div>
+                                <div class="minor">
+                                    <span class="tag">
+                                        <i class="fa fa-tag"></i><span><strong><a href="#">标签</a></strong></span>
+                                    </span>
+                                    <span class="posted-by">
+                                        <i class="fa fa-user"></i><a href="#"><span>不靠谱啊</span></a>
+                                    </span>
+                                    <span class="posted-time">
+                                        <i class="fa fa-clock-o"></i><span>26 分钟前</span>
+                                    </span>
 
-                        </div>
-                    </div>
-                </li>
-                </c:forEach>
-
-            </ol>
-        </c:if>
+                                </div>
+                            </div>
+                        </li>
+                        </c:forEach>
+                    </ol>
+                </c:if>
+            </div>
         </div>
-        <div class="slider">aa</div>
+        <div class="slider">slider</div>
     </div>
-</div>
 </body>
 </html>

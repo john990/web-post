@@ -1,6 +1,7 @@
 package com.psy.controller.home;
 
 import com.psy.bean.User;
+import com.psy.bean.view.HomePost;
 import com.psy.common.BeanUtils;
 import com.psy.common.SessionAttribute;
 import com.psy.controller.authority.Login;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -32,7 +36,15 @@ public class HomeController {
 				model.addAttribute("user",user);
 			}
 		}
-		model.addAttribute("posts", PostDao.findHomePostList(1,20));
+//		model.addAttribute("posts", PostDao.findHomePostList(1,20));
+		// TODO delete
+		List<HomePost> posts = new ArrayList<HomePost>();
+		for(int i=0;i<20;i++){
+			posts.add(new HomePost());
+		}
+		model.addAttribute("posts", posts);
+
+
 		return "home";
 	}
 }

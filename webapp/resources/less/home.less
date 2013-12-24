@@ -1,15 +1,20 @@
 @import "variables";
 
-.content-wrap{
-  padding: 0px;
+.content-wrap {
   min-height: 100%;
   position: relative;
+  margin-left: 260px;
 }
+
 .main-container {
-  margin-left: @menu-margin;
-  margin-right: @slider-margin;
-  margin-top: 5px;
   float: left;
+  width: 100%;
+  margin-right: -260px;
+}
+
+.main {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: @slider-margin;
 }
 
 .articles {
@@ -32,7 +37,7 @@
   overflow: hidden;
 }
 
-.articles > li:first-child{
+.articles > li:first-child {
   border-top: none;
 }
 
@@ -71,15 +76,15 @@
   font-size: @font-size-base;
 }
 
-.articles .article .article-info .minor a{
+.articles .article .article-info .minor a {
   margin-right: 8px;
 }
 
-.articles .article .article-info .minor i{
+.articles .article .article-info .minor i {
   margin-right: 4px;
 }
 
-.slider{
+.slider {
   width: @slider-width;
   background: #039453;
   float: left;

@@ -22,7 +22,7 @@
                             <li class="article">
                             <div class="poster-avatar">
                                 <a href="#">
-                                    <img src="http://personal-demo.u.qiniudn.com/FqfsMLeewqw_7EIk6t1r2app3Gvx" class="img-responsive" onerror="defaultAvatar(this);"/>
+                                    <img src="/resources/images/head.jpeg" class="img-responsive" onerror="defaultAvatar(this);"/>
                                 </a>
                             </div>
                             <div class="article-info">
@@ -31,16 +31,19 @@
                                 </div>
                                 <div class="minor">
                                     <span class="tag">
-                                        <i class="fa fa-tag"></i><span><strong><a href="#">标签</a></strong></span>
+                                         <span><strong><a href="#">标签</a></strong></span>
                                     </span>
                                     <span class="posted-by">
-                                        <i class="fa fa-user"></i><a href="#"><span>不靠谱啊</span></a>
+                                        &nbsp;•&nbsp; <a href="#"><span>不靠谱啊</span></a>
                                     </span>
                                     <span class="posted-time">
-                                        <i class="fa fa-clock-o"></i><span>26 分钟前</span>
+                                        &nbsp;•&nbsp; </i><span>26 分钟前</span>
                                     </span>
 
                                 </div>
+                            </div>
+                            <div class="count">
+                               <span class="badge">20</span>
                             </div>
                         </li>
                         </c:forEach>

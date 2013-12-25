@@ -1,16 +1,19 @@
 .content-wrap {
   min-height: 100%;
   position: relative;
-  margin-left: 260px;
+  margin-left: 250px;
 }
 .main-container {
   float: left;
   width: 100%;
-  margin-right: -260px;
+  margin-right: -350px;
+}
+.main-container a {
+  color: #555555;
 }
 .main {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  margin-right: 260px;
+  margin-right: 350px;
 }
 .articles {
   list-style: none;
@@ -29,9 +32,6 @@
   width: 100%;
   height: auto;
   overflow: hidden;
-}
-.articles > li:first-child {
-  border-top: none;
 }
 .articles .article .poster-avatar {
   position: absolute;
@@ -70,8 +70,18 @@
 .articles .article .article-info .minor i {
   margin-right: 4px;
 }
+.articles > li:first-child {
+  border-top: none;
+}
+.count {
+  position: absolute;
+  top: 12px;
+  right: 9px;
+  overflow: hidden;
+}
 .slider {
-  width: 250px;
-  background: #039453;
+  width: 350px;
+  min-height: 500px;
+  background: #E5EAEA;
   float: left;
 }

@@ -43,7 +43,7 @@ public class PostDao {
 		int count = 0;
 		if(!StringUtils.isEmpty(post.getCoverUrl())){
 			count = QueryHelper.update(runner, connection, SQL.ADD_META, Const.SITE_PREFIX + post.getCoverUrl());
-			int cover = (int)QueryHelper.queryNumber(runner,connection,SQL.LAST_INSERT_ID,new String[]{});
+			int cover = (int)QueryHelper.queryNumber(runner,connection,SQL.LAST_INSERT_ID);
 			post.setCover(cover);
 		}
 
@@ -115,6 +115,21 @@ public class PostDao {
 		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
 		int limitStart = (page-1)*perPage;
 		list = QueryHelper.queryBeanList(runner,HomePost.class,SQL.FIND_HOME_POST_LIST,Post.STATUS_NORMAL,limitStart,perPage);
+		return list;
+	}
+
+	/**
+	 * 查找首页文章列表
+	 * @param page
+	 * @param perPage
+	 * @return
+	 */
+	public static List<HomePost> findAllPostList(int page,int perPage){
+		page = Utils.parsePage(page);
+		List<HomePost> list = null;
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		int limitStart = (page-1)*perPage;
+		list = QueryHelper.queryBeanList(runner,HomePost.class,SQL.FIND_ALL_POST_LIST,limitStart,perPage);
 		return list;
 	}
 }

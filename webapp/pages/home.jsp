@@ -22,28 +22,28 @@
                             <li class="article">
                             <div class="poster-avatar">
                                 <a href="#">
-                                    <img src="/resources/images/head.jpeg" class="img-responsive" onerror="defaultAvatar(this);"/>
+                                    <img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);"/>
                                 </a>
                             </div>
                             <div class="article-info">
                                 <div class="title">
-                                    <a href="#"><span>这里能看大家跑了多少分，目前最多的跑了4000w分。。。</span></a>
+                                    <a href="#"><span>${p.title}</span></a>
                                 </div>
                                 <div class="minor">
                                     <span class="tag">
-                                         <span><strong><a href="#">标签</a></strong></span>
+                                         <span><strong><a href="#">${p.tag}</a></strong></span>
                                     </span>
                                     <span class="posted-by">
-                                        &nbsp;•&nbsp; <a href="#"><span>不靠谱啊</span></a>
+                                        &nbsp;•&nbsp; <a href="#"><span>${p.username}</span></a>
                                     </span>
                                     <span class="posted-time">
-                                        &nbsp;•&nbsp; </i><span>26 分钟前</span>
+                                        &nbsp;•&nbsp; </i><span>${p.createAt}</span>
                                     </span>
 
                                 </div>
                             </div>
                             <div class="count">
-                               <span class="badge">20</span>
+                               <c:if test="${not empty p.count}"><span class="badge">${p.count}</span></c:if>
                             </div>
                         </li>
                         </c:forEach>

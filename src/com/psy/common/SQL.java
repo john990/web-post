@@ -31,4 +31,6 @@ public class SQL {
 	public static final String CHANGE_POST_STATUS_BY_IDS = Read.readSql("change_post_status_by_ids.sql");
 	/** 查找首页文章列表 */
 	public static final String FIND_HOME_POST_LIST = Read.readSql("find_home_post_list.sql");
+	/** 查找所有文章列表 */
+	public static final String FIND_ALL_POST_LIST = Read.readSql("find_all_post_list.sql");
 }

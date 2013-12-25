@@ -15,7 +15,8 @@ public class HomePost {
 	private String title;
 	private String tag;
 	private String username;
-	private String createAt;
+	private String time;
+	private String count;
 
 	public String getId() {
 		return id;
@@ -57,11 +58,19 @@ public class HomePost {
 		this.username = username;
 	}
 
-	public String getCreateAt() {
-		return createAt;
+	public String getTime() {
+		return time;
 	}
 
-	public void setCreateAt(String createAt) {
-		this.createAt = createAt;
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
 	}
 }

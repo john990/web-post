@@ -21,29 +21,25 @@
         <div class="clr"></div>
     </div>
     <div class="nav-link-container menu-list">
-        <a class="nav-link" href="#" data-toggle="modal">
+        <a class="nav-link" href="${pageContext.request.contextPath}/login" data-toggle="modal">
             <div class="nav-stripe"></div>
             <span class="glyphicon glyphicon-fire"></span>
-            <span>最新</span>
-            Submit
+            <span>登录</span>
         </a>
-        <a class="nav-link" href="#" data-toggle="modal">
+        <a class="nav-link" href="${pageContext.request.contextPath}/reg" data-toggle="modal">
             <div class="nav-stripe"></div>
             <span class="glyphicon glyphicon-fire"></span>
-            <span>最新</span>
-            Submit
+            <span>注册</span>
         </a>
-        <a class="nav-link" href="#" data-toggle="modal">
+        <a class="nav-link" href="${pageContext.request.contextPath}/new/post" data-toggle="modal">
             <div class="nav-stripe"></div>
             <span class="glyphicon glyphicon-fire"></span>
-            <span>最新</span>
-            Submit
+            <span>新建文章</span>
         </a>
-        <a class="nav-link" href="#" data-toggle="modal">
+        <a class="nav-link" href="/manage/posts" data-toggle="modal">
             <div class="nav-stripe"></div>
             <span class="glyphicon glyphicon-fire"></span>
-            <span>最新</span>
-            Submit
+            <span>文章列表</span>
         </a>
     </div>
 

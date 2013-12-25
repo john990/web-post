@@ -36,15 +36,9 @@ public class HomeController {
 				model.addAttribute("user",user);
 			}
 		}
+		// TODO delete this
+		model.addAttribute("posts", PostDao.findAllPostList(1,20));
 //		model.addAttribute("posts", PostDao.findHomePostList(1,20));
-		// TODO delete
-		List<HomePost> posts = new ArrayList<HomePost>();
-		for(int i=0;i<20;i++){
-			posts.add(new HomePost());
-		}
-		model.addAttribute("posts", posts);
-
-
 		return "home";
 	}
 }

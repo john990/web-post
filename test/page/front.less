@@ -1,0 +1,75 @@
+@import "variables";
+
+@nav-bar-height: 29px;
+@nav-logo-width: 123px;
+@page-width: 940px;
+@search-input-bg: #626262;
+@search-input-width: 230px;
+
+body {
+  background: url("bg.png") repeat;
+  font-size: 13px;
+  height: 2000px;
+}
+
+.container {
+  color: lightyellow;
+  width: @page-width;
+}
+
+.navbar {
+  min-height: @nav-bar-height;
+  h3 {
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: @nav-logo-width;
+    float: left;
+  }
+  .site-logo {
+    width: 123px;
+    height: @nav-bar-height;
+    background: url("http://l.ruby-china.org/assets/text_logo-737559cd299e73bd055e1e8299a86195.png") left top no-repeat;
+    display: block;
+    border: 0px;
+    background-size: @nav-logo-width @nav-bar-height;
+  }
+  .nav {
+    position: relative;
+    left: 0;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    li {
+      display: block;
+      float: left;
+      a {
+        float: none;
+        padding: 10px 10px 11px;
+        line-height: 19px;
+        color: #999999;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      }
+      a:hover {
+        background-color: transparent;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.search-query {
+  padding: 4px 9px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1;
+  color: #ffffff;
+  background-color: @search-input-bg;
+  border: 1px solid #151515;
+  border-radius: 5px;
+  margin-top: 7px;
+  width: @search-input-width;
+}

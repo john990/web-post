@@ -1,6 +1,8 @@
 @import "variables";
+@import "less/bootstrap";
 
-@nav-bar-height: 29px;
+@nav-bar-content-height: 29px;
+@nav-bar-height: 40px;
 @nav-logo-width: 123px;
 @page-width: 940px;
 @search-input-bg: #626262;
@@ -17,8 +19,15 @@ body {
   width: @page-width;
 }
 
+.navbar-fixed-top {
+  position: static;
+  right: 0;
+  left: 0;
+  margin-bottom: 20px;
+}
+
 .navbar {
-  min-height: @nav-bar-height;
+  min-height: @nav-bar-content-height;
   h3 {
     margin: 0;
     padding: 0;
@@ -29,11 +38,11 @@ body {
   }
   .site-logo {
     width: 123px;
-    height: @nav-bar-height;
+    height: @nav-bar-content-height;
     background: url("http://l.ruby-china.org/assets/text_logo-737559cd299e73bd055e1e8299a86195.png") left top no-repeat;
     display: block;
     border: 0px;
-    background-size: @nav-logo-width @nav-bar-height;
+    background-size: @nav-logo-width @nav-bar-content-height;
   }
   .nav {
     position: relative;
@@ -72,4 +81,20 @@ body {
   border-radius: 5px;
   margin-top: 7px;
   width: @search-input-width;
+}
+
+.main {
+  margin-top: 20px;
+}
+
+.home-suggest-topic {
+  min-height: 500px;
+}
+
+.box {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  .box-shadow(0 0px 2px rgba(0,0,0,0.05));
+  border-radius: 6px;
 }

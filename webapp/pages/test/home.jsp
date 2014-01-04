@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="front.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/test/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/pages/test/front.css">
     <title>home</title>
 </head>
 <body>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="infos">
                       <div class="title">
-                        <a href="/topics/16574" title="SEO 相关">SEO 相关</a>
+                        <a href="/topics/16574" title="SEO 相关">SEO 相关34</a>
                         <i class="icon small_cert_on" title="精华贴"></i>
                       </div>
                       <div class="info">

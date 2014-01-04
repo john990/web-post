@@ -86,16 +86,13 @@ body {
   margin-top: 20px;
 }
 
-.home-suggest-topic {
-  min-height: 500px;
-}
-
 .box {
   background-color: #fff;
   padding: 10px;
   margin: 0 0 20px 0;
-  .box-shadow(0 0px 2px rgba(0,0,0,0.05));
+  .box-shadow(0 0px 2px rgba(0, 0, 0, 0.05));
   border-radius: 6px;
+  height: 100%;
 }
 
 .home_suggest_topics h2 {
@@ -106,4 +103,51 @@ body {
   text-align: center;
   color: @gray-light;
   font-weight: bold;
+}
+.home_suggest_topics .topics{
+  height: 100%;
+}
+.home_suggest_topics .topics .topic {
+  height: 50px;
+  &:nth-child(odd) {
+    width: 50%;
+    float: left;
+    clear: left;
+  }
+  .topic_line {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin: 0 -10px;
+    vertical-align: top;
+  }
+  .avatar {
+    width: 56px;
+    margin-left: 10px;
+  }
+  .right_info {
+    padding-left: 66px;
+  }
+  .replies {
+    width: 70px;
+    margin-right: 10px;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .infos {
+    padding-right: 74px;
+  }
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+  .info {
+    color: #bbb;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
 }

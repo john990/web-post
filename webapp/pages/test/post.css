@@ -1,0 +1,32 @@
+.post {
+  background: #ffffff;
+  height: auto;
+  margin-right: 260px;
+}
+.post a {
+  color: #333333;
+}
+.post .infos {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.post .infos h1 {
+  padding: 0px;
+  margin: 0px;
+  font-size: 22px;
+  color: #333;
+  text-align: left;
+  line-height: 100%;
+  margin-bottom: 8px;
+}
+.post .infos .avatar_large {
+  width: 48px;
+  height: 48px;
+}
+.post .entry-content {
+  padding: 10px;
+}
+.post .tools,
+.post .social-share-button {
+  padding: 0px 10px 10px 10px;
+}

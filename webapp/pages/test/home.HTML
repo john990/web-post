@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="front.css">
+    <title>home</title>
+</head>
+<body>
+    <!-- nav -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-inner">
+             <div class="container">
+                <h3>
+                    <a href="/" class="site-logo">
+                    </a>
+                </h3>
+                <ul class="nav">
+                    <li>
+                        <a href="#">注册</a>
+                    </li>
+                    <li>
+                        <a href="#">登录</a>
+                    </li>
+                    <li>
+                        <a href="#">发表</a>
+                    </li>
+                    <li>
+                        <a href="#">管理</a>
+                    </li>
+                </ul>
+                <form action="/search" class="navbar-search pull-left" method="get">
+                    <input type="text" name="q" class="search-query span3" value="" placeholder="搜索">
+                </form>
+                <ul class="nav pull-right" id="userbar">
+                    <li class="first">
+                        <a href="/account/sign_up">注册</a>
+                    </li>
+                    <li class="last">
+                        <a href="/account/sign_in">登录</a>
+                    </li>
+                </ul>
+             </div>
+        </div>
+    </nav>
+
+    <div class="container main">
+        <div class="bread-nav">
+            <ol class="breadcrumb">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Library</a></li>
+                  <li class="active">Data</li>
+            </ol>
+        </div>
+
+        <div class="home_suggest_topics box">
+            <h2>精华文章</h2>
+            <div class="topics">
+                <div class="topic topic_line">
+                  <div class="pull-left avatar">
+                    <a href="#"><img alt="153" class="uface" src="http://l.ruby-china.org/user/large_avatar/153.jpg" style="width:48px;height:48px;"></a>
+                  </div>
+                  <div class="right_info">
+                    <div class="pull-right replies">
+                        <a class="badge" href="#">6</a>
+                    </div>
+                    <div class="infos">
+                      <div class="title">
+                        <a href="#" title="SEO 相关">SEO 相关</a>
+                        <i class="icon small_cert_on" title="精华贴"></i>
+                      </div>
+                      <div class="info">
+                        <a class="node" href="#">分享</a>
+                        •
+                        <a data-name="杉杉" href="/ytwman">ytwman</a>
+                        <em>
+                          • 最后由 <a data-name="shiny" href="#">shiny</a>
+                            于
+                            <abbr class="timeago" title="2014-01-03T21:53:44+08:00">11小时前</abbr>回复
+                        </em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="topic topic_line">
+                    <div class="pull-left avatar">
+                        <a href="/ksec"><img alt="7929" class="uface" src="http://l.ruby-china.org/user/large_avatar/7929.jpg" style="width:48px;height:48px;"></a>
+                    </div>
+                    <div class="right_info">
+                        <div class="pull-right replies">
+                            <a class="count state_false" href="/topics/16426#reply68">68</a>
+                        </div>
+                        <div class="infos">
+                            <div class="title">
+                                <a href="/topics/16426" title="Ruby 2.1 is out.">Ruby 2.1 is out.</a>
+                                <i class="icon small_cert_on" title="精华贴"></i>
+                            </div>
+                            <div class="info">
+                                <a class="node" href="/topics/node1">Ruby</a>
+                                •
+                                <a data-name="" href="/ksec">ksec</a>
+                                <em>
+                                    •
+                                    最后由 <a data-name="umhan35" href="/umhan35">umhan35</a> 于<abbr class="timeago" title="2014-01-03T15:09:45+08:00">1天前</abbr>回复
+                                </em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="more">
+                <a href="/topics/excellent">查看更多精华贴...</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

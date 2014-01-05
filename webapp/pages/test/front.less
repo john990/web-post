@@ -7,6 +7,8 @@
 @page-width: 940px;
 @search-input-bg: #626262;
 @search-input-width: 230px;
+@topics-bg: #FFF;
+@topics-header-footer-bg: #F5F5F5;
 
 body {
   background: url("bg.png") repeat;
@@ -87,8 +89,7 @@ body {
 }
 
 .box {
-  background-color: #fff;
-  padding: 10px;
+  background-color: @topics-header-footer-bg;
   margin: 0 0 20px 0;
   .box-shadow(0 0px 2px rgba(0, 0, 0, 0.05));
   border-radius: 6px;
@@ -98,7 +99,7 @@ body {
 .home_suggest_topics h2 {
   font-size: 14px;
   margin: 0 -10px;
-  padding: 0 10px 10px 10px;
+  padding: 10px 0px;
   border-bottom: 1px solid #ddd;
   text-align: center;
   color: @gray-light;
@@ -106,20 +107,24 @@ body {
 }
 .home_suggest_topics .topics{
   height: 100%;
+  background: @topics-bg;
+  .topic_line {
+    background: @topics-bg;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    vertical-align: top;
+  }
 }
 .home_suggest_topics .topics .topic {
-  height: 50px;
+  height: 68px;
   &:nth-child(odd) {
     width: 50%;
     float: left;
     clear: left;
   }
-  .topic_line {
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    margin: 0 -10px;
-    vertical-align: top;
+  &:nth-child(even) {
+    width: 50%;
+    margin-left: 50%;
   }
   .avatar {
     width: 56px;
@@ -150,4 +155,10 @@ body {
     margin-bottom: 2px;
     font-size: 12px;
   }
+}
+
+.more {
+  padding: 8px;
+  font-size: 14px;
+  text-align: right;
 }

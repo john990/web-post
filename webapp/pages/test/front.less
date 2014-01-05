@@ -1,6 +1,5 @@
 @import "variables";
 @import "less/bootstrap";
-
 @nav-bar-content-height: 29px;
 @nav-bar-height: 40px;
 @nav-logo-width: 123px;
@@ -16,149 +15,14 @@ body {
   height: 2000px;
 }
 
-.container {
-  width: @page-width;
-}
-
-.navbar-fixed-top {
-  position: static;
-  right: 0;
-  left: 0;
-  margin-bottom: 20px;
-}
-
-.navbar {
-  min-height: @nav-bar-content-height;
-  h3 {
-    margin: 0;
-    padding: 0;
-    margin-top: 5px;
-    margin-right: 10px;
-    width: @nav-logo-width;
-    float: left;
-  }
-  .site-logo {
-    width: 123px;
-    height: @nav-bar-content-height;
-    background: url("http://l.ruby-china.org/assets/text_logo-737559cd299e73bd055e1e8299a86195.png") left top no-repeat;
-    display: block;
-    border: 0px;
-    background-size: @nav-logo-width @nav-bar-content-height;
-  }
-  .nav {
-    position: relative;
-    left: 0;
-    display: block;
-    float: left;
-    margin: 0 10px 0 0;
-    li {
-      display: block;
-      float: left;
-      a {
-        float: none;
-        padding: 10px 10px 11px;
-        line-height: 19px;
-        color: #999999;
-        text-decoration: none;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-      }
-      a:hover {
-        background-color: transparent;
-        color: #ffffff;
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.search-query {
-  padding: 4px 9px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  line-height: 1;
-  color: #ffffff;
-  background-color: @search-input-bg;
-  border: 1px solid #151515;
-  border-radius: 5px;
-  margin-top: 7px;
-  width: @search-input-width;
-}
-
-.main {
-  margin-top: 20px;
-}
-
 .box {
   background-color: @topics-header-footer-bg;
   margin: 0 0 20px 0;
   .box-shadow(0 0px 2px rgba(0, 0, 0, 0.05));
-  border-radius: 6px;
+  border-radius: 2px;
   height: 100%;
 }
 
-.home_suggest_topics h2 {
-  font-size: 14px;
-  margin: 0 -10px;
-  padding: 10px 0px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  color: @gray-light;
-  font-weight: bold;
-}
-.home_suggest_topics .topics{
-  height: 100%;
-  background: @topics-bg;
-  .topic_line {
-    background: @topics-bg;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    vertical-align: top;
-  }
-}
-.home_suggest_topics .topics .topic {
-  height: 68px;
-  &:nth-child(odd) {
-    width: 50%;
-    float: left;
-    clear: left;
-  }
-  &:nth-child(even) {
-    width: 50%;
-    margin-left: 50%;
-  }
-  .avatar {
-    width: 56px;
-    margin-left: 10px;
-  }
-  .right_info {
-    padding-left: 66px;
-  }
-  .replies {
-    width: 70px;
-    margin-right: 10px;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .infos {
-    padding-right: 74px;
-  }
-  .title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    margin-top: 2px;
-    margin-bottom: 6px;
-  }
-  .info {
-    color: #bbb;
-    margin-bottom: 2px;
-    font-size: 12px;
-  }
-}
+@import "home";
+@import "post";
 
-.more {
-  padding: 8px;
-  font-size: 14px;
-  text-align: right;
-}

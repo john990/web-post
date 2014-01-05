@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="front.css">
+    <title>post</title>
+</head>
+<body>
+<!-- nav -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-inner">
+        <div class="container">
+            <h3>
+                <a href="/" class="site-logo">
+                </a>
+            </h3>
+            <ul class="nav">
+                <li>
+                    <a href="#">注册</a>
+                </li>
+                <li>
+                    <a href="#">登录</a>
+                </li>
+                <li>
+                    <a href="#">发表</a>
+                </li>
+                <li>
+                    <a href="#">管理</a>
+                </li>
+            </ul>
+            <form action="/search" class="navbar-search pull-left" method="get">
+                <input type="text" name="q" class="search-query span3" value="" placeholder="搜索">
+            </form>
+            <ul class="nav pull-right" id="userbar">
+                <li class="first">
+                    <a href="/account/sign_up">注册</a>
+                </li>
+                <li class="last">
+                    <a href="/account/sign_in">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container main">
+    <div class="bread-nav">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <div class="post box">
+        <div class="infos">
+            <div class="pull-right avatar_large">
+                <a href="/unionx"><img alt="1ae4c732f6346be74fa919040c773437" class="uface" src="http://ruby-china.org/avatar/1ae4c732f6346be74fa919040c773437.png?s=96&amp;d=404" style="width:48px;height:48px;"></a>
+            </div>
+            <h1 class="entry-title">OSX 10.9 的默认 Ruby 版本是 2.0，但是 brew server 使用的还是 1.8</h1>
+
+            <div class="info leader">
+                <a class="node" href="/topics/node1">Ruby</a>
+                •
+                <a data-author="true" data-name="帝归" href="/unionx">unionx</a>
+                •
+                于<abbr class="timeago" title="2014-01-05T01:41:35+08:00">10小时前</abbr>发布
+                •
+                最后由
+                <a data-name="zhuangya" href="/zhuangya">zhuangya</a> 于<abbr class="timeago" title="2014-01-05T10:52:43+08:00">1小时前</abbr>回复
+                •
+                129次阅读
+            </div>
+        </div>
+        <div class="body entry-content">
+            <p>官方指南是用 /usr/bin/gem install sinatra 就可以，但是现在不行了。</p>
+
+            <p>需要用 /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem install sinatra </p>
+
+            <p>谁去提交一个patch修复一下？</p>
+        </div>
+        <div class="tools pull-right">
+            <a class="likeable" data-count="0" data-id="16630" data-state="" data-type="Topic" href="#" onclick="return App.likeable(this);" rel="twipsy" data-original-title="喜欢"><i class="icon small_like"></i>
+                <span>喜欢</span></a>
+        </div>
+        <div class="social-share-button" data-title="OSX 10.9 的默认 Ruby 版本是 2.0，但是 brew server 使用的还是 1.8 via: @ruby_china " data-img="" data-url="">
+            <a class="social-share-button-twitter" data-site="twitter" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="分享到Twitter">twitter</a>
+            <a class="social-share-button-facebook" data-site="facebook" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="分享到Facebook">facebook</a>
+            <a class="social-share-button-google_plus" data-site="google_plus" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="分享到Google+"></a>
+            <a class="social-share-button-weibo" data-site="weibo" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="分享到新浪微博"></a>
+            <a class="social-share-button-douban" data-site="douban" href="#" onclick="return SocialShareButton.share(this);" rel="nofollow " title="分享到豆瓣"></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

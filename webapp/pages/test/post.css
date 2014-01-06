@@ -30,3 +30,8 @@
 .post .social-share-button {
   padding: 0px 10px 10px 10px;
 }
+.comment .total {
+  padding: 6px 10px;
+  border-bottom: 1px solid #DDD;
+  color: #999;
+}

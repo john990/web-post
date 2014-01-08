@@ -6099,10 +6099,13 @@ body {
   font-size: 14px;
   text-align: right;
 }
+.post-container {
+  width: 680px;
+  float: left;
+}
 .post {
   background: #ffffff;
   height: auto;
-  margin-right: 260px;
 }
 .post a {
   color: #333333;
@@ -6163,10 +6166,17 @@ body {
   color: #999999;
 }
 .reply {
-  margin-right: 260px;
   padding: 10px;
+}
+.reply textarea {
+  max-width: 100%;
 }
 .reply .send {
   margin-top: 10px;
   width: 100%;
+}
+.slide {
+  width: 250px;
+  height: 100px;
+  float: right;
 }

@@ -51,32 +51,6 @@
                     </div>
                   </div>
                 </div>
-
-                <div class="topic topic_line">
-                    <div class="pull-left avatar">
-                        <a href="/ksec"><img alt="7929" class="uface" src="http://l.ruby-china.org/user/large_avatar/7929.jpg" style="width:48px;height:48px;"></a>
-                    </div>
-                    <div class="right_info">
-                        <div class="pull-right replies">
-                            <a class="count state_false" href="/topics/16426#reply68">68</a>
-                        </div>
-                        <div class="infos">
-                            <div class="title">
-                                <a href="/topics/16426" title="Ruby 2.1 is out.">Ruby 2.1 is out.</a>
-                                <i class="icon small_cert_on" title="精华贴"></i>
-                            </div>
-                            <div class="info">
-                                <a class="node" href="/topics/node1">Ruby</a>
-                                •
-                                <a data-name="" href="/ksec">ksec</a>
-                                <em>
-                                    •
-                                    最后由 <a data-name="umhan35" href="/umhan35">umhan35</a> 于<abbr class="timeago" title="2014-01-03T15:09:45+08:00">1天前</abbr>回复
-                                </em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="more">
                 <a href="/topics/excellent">查看更多精华贴...</a>

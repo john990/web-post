@@ -7,51 +7,81 @@
 <head lang="zh-CN">
     <%@include file="include/head.meta.html" %>
     <%@include file="include/base.css.js.html" %>
-    <link rel="stylesheet" href="/resources/css/menu.css">
-    <link rel="stylesheet" href="/resources/css/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/front.css">
     <title>home</title>
 </head>
 <body>
-    <%@include file="include/menu.jsp" %>
-    <div class="content-wrap">
-        <div class="main-container">
-            <div class="main">
-                <c:if test="${not empty posts}">
-                    <ol class="articles">
-                        <c:forEach var="p" items="${posts}">
-                            <li class="article">
-                            <div class="poster-avatar">
-                                <a href="#">
-                                    <img src="${p.head}" class="img-responsive" onerror="defaultAvatar(this);"/>
-                                </a>
-                            </div>
-                            <div class="article-info">
-                                <div class="title">
-                                    <a href="#"><span>${p.title}</span></a>
-                                </div>
-                                <div class="minor">
-                                    <span class="tag">
-                                         <span><strong><a href="#">${p.tag}</a></strong></span>
-                                    </span>
-                                    <span class="posted-by">
-                                        &nbsp;•&nbsp; <a href="#"><span>${p.username}</span></a>
-                                    </span>
-                                    <span class="posted-time">
-                                        &nbsp;•&nbsp; </i><span>${p.createAt}</span>
-                                    </span>
+    <%@include file="include/nav-001.jsp" %>
+    <div class="container main">
+        <div class="bread-nav">
+            <ol class="breadcrumb">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Library</a></li>
+                  <li class="active">Data</li>
+            </ol>
+        </div>
 
-                                </div>
+        <div class="home_suggest_topics box">
+            <h2>精华文章</h2>
+            <div class="topics">
+                <div class="topic topic_line">
+                  <div class="pull-left avatar">
+                    <a href="#"><img alt="153" class="uface" src="http://l.ruby-china.org/user/large_avatar/153.jpg" style="width:48px;height:48px;"></a>
+                  </div>
+                  <div class="right_info">
+                    <div class="pull-right replies">
+                        <a class="badge" href="#">6</a>
+                    </div>
+                    <div class="infos">
+                      <div class="title">
+                        <a href="#" title="SEO 相关">SEO 相关</a>
+                        <i class="icon small_cert_on" title="精华贴"></i>
+                      </div>
+                      <div class="info">
+                        <a class="node" href="#">分享</a>
+                        •
+                        <a data-name="杉杉" href="/ytwman">ytwman</a>
+                        <em>
+                          • 最后由 <a data-name="shiny" href="#">shiny</a>
+                            于
+                            <abbr class="timeago" title="2014-01-03T21:53:44+08:00">11小时前</abbr>回复
+                        </em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="topic topic_line">
+                    <div class="pull-left avatar">
+                        <a href="/ksec"><img alt="7929" class="uface" src="http://l.ruby-china.org/user/large_avatar/7929.jpg" style="width:48px;height:48px;"></a>
+                    </div>
+                    <div class="right_info">
+                        <div class="pull-right replies">
+                            <a class="count state_false" href="/topics/16426#reply68">68</a>
+                        </div>
+                        <div class="infos">
+                            <div class="title">
+                                <a href="/topics/16426" title="Ruby 2.1 is out.">Ruby 2.1 is out.</a>
+                                <i class="icon small_cert_on" title="精华贴"></i>
                             </div>
-                            <div class="count">
-                               <c:if test="${not empty p.count}"><span class="badge">${p.count}</span></c:if>
+                            <div class="info">
+                                <a class="node" href="/topics/node1">Ruby</a>
+                                •
+                                <a data-name="" href="/ksec">ksec</a>
+                                <em>
+                                    •
+                                    最后由 <a data-name="umhan35" href="/umhan35">umhan35</a> 于<abbr class="timeago" title="2014-01-03T15:09:45+08:00">1天前</abbr>回复
+                                </em>
                             </div>
-                        </li>
-                        </c:forEach>
-                    </ol>
-                </c:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="more">
+                <a href="/topics/excellent">查看更多精华贴...</a>
             </div>
         </div>
-        <div class="slider">slider</div>
     </div>
 </body>
 </html>

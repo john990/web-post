@@ -1,95 +1,138 @@
-@import "variables";
-
-.content-wrap {
-  min-height: 100%;
-  position: relative;
-  margin-left: @menu-width;
+.container {
+  width: @page-width;
 }
 
-.main-container {
-  float: left;
-  width: 100%;
-  margin-right: -@slider-margin;
-  a{
-    color: @gray;
+.navbar-fixed-top {
+  position: static;
+  right: 0;
+  left: 0;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  min-height: @nav-bar-content-height;
+  h3 {
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-right: 10px;
+    width: @nav-logo-width;
+    float: left;
   }
+  .site-logo {
+    width: 123px;
+    height: @nav-bar-content-height;
+    background: url("http://l.ruby-china.org/assets/text_logo-737559cd299e73bd055e1e8299a86195.png") left top no-repeat;
+    display: block;
+    border: 0px;
+    background-size: @nav-logo-width @nav-bar-content-height;
+  }
+  .nav {
+    position: relative;
+    left: 0;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    li {
+      display: block;
+      float: left;
+      a {
+        float: none;
+        padding: 10px 10px 11px;
+        line-height: 19px;
+        color: #999999;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      }
+      a:hover {
+        background-color: transparent;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.search-query {
+  padding: 4px 9px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1;
+  color: #ffffff;
+  background-color: @search-input-bg;
+  border: 1px solid #151515;
+  border-radius: 5px;
+  margin-top: 7px;
+  width: @search-input-width;
 }
 
 .main {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  margin-right: @slider-margin;
+  margin-top: 20px;
 }
 
-.articles {
-  list-style: none;
-  background: #fff;
-  margin: 0;
-  padding: 0;
-  .article {
-    display: block;
-    padding: 11px 0 8px 0;
-    position: relative;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
+.home_suggest_topics h2 {
+  font-size: 14px;
+  margin: 0 -10px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  color: @gray-light;
+  font-weight: bold;
+}
+.home_suggest_topics .topics{
+  height: 100%;
+  background: @topics-bg;
+  .topic_line {
+    background: @topics-bg;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    vertical-align: top;
+  }
+}
+.home_suggest_topics .topics .topic {
+  height: 68px;
+  &:nth-child(odd) {
+    width: 50%;
+    float: left;
+    clear: left;
+  }
+  &:nth-child(even) {
+    width: 50%;
+    margin-left: 50%;
+  }
+  .avatar {
+    width: 56px;
+    margin-left: 10px;
+  }
+  .right_info {
+    padding-left: 66px;
+  }
+  .replies {
+    width: 70px;
+    margin-right: 10px;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .infos {
+    padding-right: 74px;
+  }
+  .title {
+    white-space: nowrap;
     overflow: hidden;
-    .poster-avatar {
-      position: absolute;
-      top: 12px;
-      left: 9px;
-      width: 40px;
-      height: 40px;
-      overflow: hidden;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-    }
-    .article-info {
-      margin: 0 125px 0 59px;
-      height: 42px;
-      overflow: hidden;
-      a.title {
-        display: inline-block;
-        max-width: 90%;
-        font-size: @font-size-h3;
-        color: @gray-dark;
-        font-weight: 400;
-        white-space: nowrap;
-        overflow: hidden;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
-        padding-left: 22px;
-      }
-      .minor {
-        color: @gray-light;
-        font-size: @font-size-base;
-        a {
-          margin-right: 8px;
-        }
-        i {
-          margin-right: 4px;
-        }
-      }
-    }
+    text-overflow: ellipsis;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+  .info {
+    color: #bbb;
+    margin-bottom: 2px;
+    font-size: 12px;
   }
 }
 
-.articles > li:first-child {
-  border-top: none;
-}
-
-.count{
-  position: absolute;
-  top: 12px;
-  right: 9px;
-  overflow: hidden;
-}
-
-.slider {
-  width: @slider-width;
-  min-height: 500px;
-  background: #E5EAEA;
-  float: left;
+.more {
+  padding: 8px;
+  font-size: 14px;
+  text-align: right;
 }

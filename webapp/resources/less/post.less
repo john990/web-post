@@ -1,0 +1,89 @@
+@import "variables";
+@import "front";
+
+.post-container {
+  width: @page-width - @slider-width;
+  float: left;
+}
+
+.post {
+  background: #ffffff;
+  height: auto;
+  a {
+    color: @gray-dark;
+  }
+  .infos {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    h1 {
+      padding: 0px;
+      margin: 0px;
+      font-size: 22px;
+      color: #333;
+      text-align: left;
+      line-height: 100%;
+      margin-bottom: 8px;
+    }
+    .avatar_large {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .entry-content {
+    padding: 10px;
+  }
+
+  .tools, .social-share-button {
+    padding: 0px 10px 10px 10px;
+  }
+}
+
+.comments {
+  padding-bottom: 10px;
+  .total {
+    padding: 6px 10px;
+    border-bottom: 1px solid #DDD;
+    color: #999;
+  }
+  .items .item {
+    padding: 10px 0px;
+    border-bottom: 1px solid #DDD;
+    .face {
+      margin: 0px 10px;
+    }
+    .content {
+      padding-right: 10px;
+      p {
+        margin: 0px;
+      }
+    }
+    .name {
+      margin-right: 10px;
+    }
+    .time {
+      color: @gray-light;
+      font-size: 10px;
+      a {
+        color: @gray-light;
+      }
+    }
+  }
+}
+
+.reply {
+  padding: 10px;
+  textarea {
+    max-width: 100%;
+  }
+  .send {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.slide {
+  width: @slider-width - 40px;
+  height: 100px;
+  float: right;
+}

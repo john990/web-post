@@ -1,0 +1,31 @@
+@import "variables";
+@import "bootstrap/mixins";
+
+@nav-bar-content-height: 29px;
+@nav-bar-height: 40px;
+@nav-logo-width: 123px;
+@page-width: 940px;
+@slider-width: 260px;
+@search-input-bg: #626262;
+@search-input-width: 230px;
+@topics-bg: #FFF;
+@topics-header-footer-bg: #F5F5F5;
+
+body {
+  background: url("/resources/images/bg.png") repeat;
+  font-size: 13px;
+  height: 2000px;
+}
+
+.box {
+  background-color: @topics-header-footer-bg;
+  margin: 0 0 20px 0;
+  .box-shadow(0 0px 2px rgba(0, 0, 0, 0.05));
+  border-radius: 2px;
+  height: 100%;
+}
+
+@import "home";
+@import "post";
+@import "create";
+

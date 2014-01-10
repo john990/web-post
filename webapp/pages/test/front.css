@@ -6185,3 +6185,26 @@ body {
   width: 680px;
   float: left;
 }
+.create-container textarea {
+  max-width: 100%;
+}
+.create-container .content-header span {
+  margin-right: 10px;
+}
+.create-container .content-header a {
+  font-size: 10px;
+  margin-right: 10px;
+}
+.create-container .btn-create {
+  margin-top: 10px;
+  float: right;
+}
+.create-container .control-group {
+  margin-bottom: 10px;
+}
+.create-container .control-group span {
+  margin-left: 10px;
+}
+.create-container .controls {
+  margin-top: 5px;
+}

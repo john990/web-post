@@ -8,95 +8,58 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="zh-CN">
     <%@include file="include/head.meta.html" %>
     <%@include file="include/base.css.js.html" %>
-    <%@include file="include/js.editor.html" %>
-    <script type="text/javascript" src="/resources/js/page/new-post.js"></script>
-    <title>new post</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/front.css">
+    <title>post</title>
 </head>
 <body>
-<div class="container">
-    <div class="col-lg-10 center">
-    <!-- 文章表單 -->
-    <form:form id="form" role="form"  method="post"
-               modelAttribute="post" cssClass="hide1" autocomplete="false">
-        <form:hidden id="title" class="form-control top-space-2" path="title" name="title" data-rule="题目:required;title" value="${post.title}"/>
-        <form:hidden id="cover-url" path="coverUrl" value="${post.coverUrl}"/>
-        <form:hidden id="content" path="content" value="${post.content}" />
-    </form:form>
-
-        <div class="form-horizontal" data-validator-option="{theme:'simple_right'}">
+<%@include file="include/nav-001.jsp" %>
+<div class="container main">
+    <div class="bread-nav">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <div class="create-container box">
+        <form class="form-horizontal">
             <fieldset>
-                <div class="form-group">
-                    <!-- Text input-->
-                    <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;题目：</span>
-
-                    <div class="col-sm-10">
-                        <input id="title-show" class="form-control top-space-2" path="title" name="title" data-rule="题目:required;title" placeholder="题目"/>
+                <div id="legend" class="">
+                    <legend class="">发表一篇文章</legend>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">TITLE</span>
+                    <div class="controls">
+                        <input type="text" placeholder="title" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
-                    <!-- Text input-->
-                    <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;封面：</span>
-
-                    <div class="col-sm-10">
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <!-- 七牛表單 -->
-                             <form:form id="file-form" method="post" action="http://up.qiniu.com/" enctype="multipart/form-data" >
-                                <span class="btn btn-default btn-file">
-                                    <span class="fileinput-new">Select image</span>
-                                    <span class="fileinput-exists">Change</span>
-                                    <input id="cover-file" multiple="multiple" size="3" name="file" type="file" class="form-control top-space-2 filePrew"/>
-                                    <input id="token" name="token" type="hidden"/>
-                                </span>
-                                <span id="file-name" class="fileinput-filename">
-                                     file-name
-                                </span>
-                                <span id="cover-process" class=""></span>
-                             </form:form>
+                <div class="control-group">
+                    <div class="content-header">
+                        <span class="control-label">CONTENT</span>
+                        <a href="#">添加图片</a>
+                        <a href="#">添加图片</a>
+                    </div>
+                    <div class="controls">
+                        <div class="textarea">
+                            <textarea class="form-control" placeholder="content" rows="10"></textarea>
                         </div>
-
                     </div>
                 </div>
-                <div class="form-group">
-                    <span class="col-sm-2 control-label">&nbsp;&nbsp;&nbsp;内容：</span>
-                    <div class="col-sm-10">
-                        <textarea id="content-show" class="content-show"></textarea>
-                    </div>
-                </div>
-                <div class="form-group top-space-15">
-                    <!-- Button -->
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button id="submit" type="button" class="btn btn-primary">发布</button>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-default btn-create">Button</button>
                     </div>
                 </div>
             </fieldset>
-        </div>
+        </form>
+    </div>
+    <div class="slide box">
+        aaaa
     </div>
 </div>
-<script type="text/javascript">
-    // tinymce初始化
-    tinymce.init({
-        mode : "textareas",
-        editor_selector :"content-show",
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu autoresize"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        language : 'zh_CN',
-        menubar: false,
-        width: '99%' ,
-        autoresize_min_height: '400',
-        autoresize_max_height: '800',
-        setup : function(ed) {
-            ed.on('change', function(e) {
-                $('#content').val(ed.getContent());
-            })
-        }
-    });
-</script>
 </body>
 </html>

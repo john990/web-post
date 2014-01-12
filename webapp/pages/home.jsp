@@ -25,32 +25,37 @@
         <div class="home_suggest_topics box">
             <h2>精华文章</h2>
             <div class="topics">
-                <div class="topic topic_line">
-                  <div class="pull-left avatar">
-                    <a href="#"><img alt="153" class="uface" src="http://l.ruby-china.org/user/large_avatar/153.jpg" style="width:48px;height:48px;"></a>
-                  </div>
-                  <div class="right_info">
-                    <div class="pull-right replies">
-                        <a class="badge" href="#">6</a>
-                    </div>
-                    <div class="infos">
-                      <div class="title">
-                        <a href="#" title="SEO 相关">SEO 相关</a>
-                        <i class="icon small_cert_on" title="精华贴"></i>
-                      </div>
-                      <div class="info">
-                        <a class="node" href="#">分享</a>
-                        •
-                        <a data-name="杉杉" href="/ytwman">ytwman</a>
-                        <em>
-                          • 最后由 <a data-name="shiny" href="#">shiny</a>
-                            于
-                            <abbr class="timeago" title="2014-01-03T21:53:44+08:00">11小时前</abbr>回复
-                        </em>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <c:if test="${not empty posts}">
+                    <c:forEach var="p" items="${posts}">
+                        <div class="topic topic_line">
+                            <div class="pull-left avatar">
+                                <a href="#">
+                                    <img alt="153" class="uface" src="http://l.ruby-china.org/user/large_avatar/153.jpg" style="width:48px;height:48px;">
+                                </a>
+                            </div>
+                            <div class="right_info">
+                                <div class="pull-right replies">
+                                    <a class="badge" href="#">6</a>
+                                </div>
+                                <div class="infos">
+                                    <div class="title">
+                                        <a href="/post/${p.id}" title="SEO 相关">${p.title}</a>
+                                        <i class="icon small_cert_on" title="精华贴"></i>
+                                    </div>
+                                    <div class="info">
+                                        <a class="node" href="#">${p.tag}</a>
+                                        •由
+                                        <a data-name="杉杉" href="/user/${p.username}">${p.username}</a>
+                                        <em>
+                                            • 创建于
+                                            <abbr class="timeago" title="${p.time}">${p.time}</abbr>
+                                        </em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
             </div>
             <div class="more">
                 <a href="/topics/excellent">查看更多精华贴...</a>

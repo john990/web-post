@@ -33,4 +33,6 @@ public class SQL {
 	public static final String FIND_HOME_POST_LIST = Read.readSql("find_home_post_list.sql");
 	/** 查找所有文章列表 */
 	public static final String FIND_ALL_POST_LIST = Read.readSql("find_all_post_list.sql");
+	/** 根据ID查找文章内容 */
+	public static final String FIND_POST_BY_ID = Read.readSql("find_post_by_id.sql");
 }

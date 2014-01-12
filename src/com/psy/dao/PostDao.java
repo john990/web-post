@@ -132,4 +132,14 @@ public class PostDao {
 		list = QueryHelper.queryBeanList(runner,HomePost.class,SQL.FIND_ALL_POST_LIST,limitStart,perPage);
 		return list;
 	}
+
+	/**
+	 * 根据ID查找文章内容
+	 * @param id
+	 * @return
+	 */
+	public static ViewPost findPostById(int id){
+		QueryRunner runner = new QueryRunner(DBManager.getDataSource());
+		return QueryHelper.queryBean(runner,ViewPost.class,null, SQL.FIND_POST_BY_ID,id);
+	}
 }

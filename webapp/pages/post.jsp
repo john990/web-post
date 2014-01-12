@@ -25,29 +25,25 @@
             <div class="post box">
                 <div class="infos">
                     <div class="pull-right avatar_large">
-                        <a href="/unionx"><img alt="1ae4c732f6346be74fa919040c773437" class="uface" src="http://ruby-china.org/avatar/1ae4c732f6346be74fa919040c773437.png?s=96&amp;d=404" style="width:48px;height:48px;"></a>
+                        <a href="/user/${post.userId}"><img alt="1ae4c732f6346be74fa919040c773437" class="uface" src="${post.avatar}" style="width:48px;height:48px;"></a>
                     </div>
-                    <h1 class="entry-title">OSX 10.9 的默认 Ruby 版本是 2.0，但是 brew server 使用的还是 1.8</h1>
+                    <h1 class="entry-title">${post.title}</h1>
 
                     <div class="info leader">
-                        <a class="node" href="/topics/node1">Ruby</a>
+                        <a class="node" href="/tag/${post.tag}">${post.tag}</a>
                         •
-                        <a data-author="true" data-name="帝归" href="/unionx">unionx</a>
+                        <a data-author="true" data-name="帝归" href="/user/${post.userId}">${post.username}</a>
                         •
-                        于<abbr class="timeago" title="2014-01-05T01:41:35+08:00">10小时前</abbr>发布
+                        于<abbr class="timeago" title="${post.createAt}">${post.createAt}</abbr>发布
                         •
                         最后由
                         <a data-name="zhuangya" href="/zhuangya">zhuangya</a> 于<abbr class="timeago" title="2014-01-05T10:52:43+08:00">1小时前</abbr>回复
                         •
-                        129次阅读
+                        ${post.viewCount}次阅读
                     </div>
                 </div>
                 <div class="body entry-content">
-                    <p>官方指南是用 /usr/bin/gem install sinatra 就可以，但是现在不行了。</p>
-
-                    <p>需要用 /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/gem install sinatra </p>
-
-                    <p>谁去提交一个patch修复一下？</p>
+                    ${post.content}
                 </div>
                 <div class="tools pull-right">
                     <a class="likeable" data-count="0" data-id="16630" data-state="" data-type="Topic" href="#" onclick="return App.likeable(this);" rel="twipsy" data-original-title="喜欢"><i class="icon small_like"></i>
@@ -64,7 +60,7 @@
 
             <div class="post comments box">
                 <div class="total">
-                    共收到 <b>80</b> 条回复
+                    共收到 <b>${post.commentCount}</b> 条回复
                 </div>
                 <div class="items">
                     <div class="item" id="reply51">

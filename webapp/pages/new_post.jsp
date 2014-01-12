@@ -13,7 +13,7 @@
     <%@include file="include/base.css.js.html" %>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/front.css">
-    <title>post</title>
+    <title>create post</title>
 </head>
 <body>
 <%@include file="include/nav-001.jsp" %>
@@ -32,26 +32,26 @@
                     <legend class="">发表一篇文章</legend>
                 </div>
                 <div class="control-group">
-                    <span class="control-label">TITLE</span>
+                    <span class="control-label">文章标题</span>
                     <div class="controls">
-                        <input type="text" placeholder="title" class="form-control">
+                        <input type="text" placeholder="一句话概括你要表达的内容" class="form-control">
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="content-header">
-                        <span class="control-label">CONTENT</span>
+                        <span class="control-label">正文</span>
                         <a href="#">添加图片</a>
                         <a href="#">添加图片</a>
                     </div>
                     <div class="controls">
                         <div class="textarea">
-                            <textarea class="form-control" placeholder="content" rows="10"></textarea>
+                            <textarea class="form-control" placeholder="你要说什么？" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button class="btn btn-default btn-create">Button</button>
+                        <button class="btn btn-default btn-create">完成</button>
                     </div>
                 </div>
             </fieldset>

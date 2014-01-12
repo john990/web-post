@@ -1,4 +1,4 @@
-package com.psy.bean.view;
+package com.psy.controller.post;
 
 /**
  * Created by kai on 1/12/14.<br/>
@@ -11,8 +11,8 @@ public class ViewPost {
 	private String content;
 	private String createAt;
 	private String updateAt;
-	private int viewCount;
-	private int commentCount;
+	private String viewCount;
+	private String commentCount;
 	private String tag;
 	private String avatar;
 	private String username;
@@ -58,19 +58,19 @@ public class ViewPost {
 		this.updateAt = updateAt;
 	}
 
-	public int getViewCount() {
+	public String getViewCount() {
 		return viewCount;
 	}
 
-	public void setViewCount(int viewCount) {
+	public void setViewCount(String viewCount) {
 		this.viewCount = viewCount;
 	}
 
-	public int getCommentCount() {
+	public String getCommentCount() {
 		return commentCount;
 	}
 
-	public void setCommentCount(int commentCount) {
+	public void setCommentCount(String commentCount) {
 		this.commentCount = commentCount;
 	}
 

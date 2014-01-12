@@ -37,17 +37,17 @@ public class ManagePostController {
 
 
 	//	@Login
-	@RequestMapping(value = "posts/{page_param}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<ViewPost> getPosts(@PathVariable Object page_param, ModelMap model) {
-		int page = BaseUtils.toInt(page_param);
-		if (page == 0) page = 1;
-		List<ViewPost> list = PostDao.findPostByStatus(Post.STATUS_NOT_AUDIT, page, PER_PAGE_SHOW);
-		if(list!= null && list.size()>0){
-			list.get(0).setCount(PostDao.countPostByStatus(Post.STATUS_NOT_AUDIT));
-		}
-		return list;
-	}
+//	@RequestMapping(value = "posts/{page_param}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+//	@ResponseBody
+//	public List<ViewPost> getPosts(@PathVariable Object page_param, ModelMap model) {
+//		int page = BaseUtils.toInt(page_param);
+//		if (page == 0) page = 1;
+//		List<ViewPost> list = PostDao.findPostByStatus(Post.STATUS_NOT_AUDIT, page, PER_PAGE_SHOW);
+//		if(list!= null && list.size()>0){
+//			list.get(0).setCount(PostDao.countPostByStatus(Post.STATUS_NOT_AUDIT));
+//		}
+//		return list;
+//	}
 
 	@RequestMapping(value = "posts/count/{status}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody

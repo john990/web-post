@@ -12,7 +12,7 @@ File Encoding         : 65001
 
 Date: 2013-12-14 16:20:28
 */
-/* create database `psy-web`;*/
+create database `psy-web`;
 USE  `psy-web`;
 SET FOREIGN_KEY_CHECKS=0;
 

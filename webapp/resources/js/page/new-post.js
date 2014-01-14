@@ -3,12 +3,6 @@
  */
 $(function () {
     load();
-    changeListener();
-    $("#cover-file").change(function () {
-        var file = document.getElementById("cover-file").files[0];
-        $("#file-name").html(file.name);
-        getToken();
-    });
     /** 获取七牛TOKEN */
     function getToken() {
         $.ajax({
@@ -45,15 +39,6 @@ $(function () {
     $("#submit").click(function () {
         $("#form").submit();
     });
-
-
-    // 表单赋值监听
-    function changeListener() {
-        // title
-        $('#title-show').change(function () {
-            $('#title').val($('#title-show').val());
-        });
-    }
 
     // 加载默认值
     function load() {

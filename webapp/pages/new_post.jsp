@@ -13,6 +13,7 @@
     <%@include file="include/base.css.js.html" %>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/front.css">
+    <script type="text/javascript" src="/resources/js/page/new-post.js"></script>
     <title>create post</title>
 </head>
 <body>
@@ -26,7 +27,8 @@
         </ol>
     </div>
     <div class="create-container box">
-        <form class="form-horizontal">
+        <form:form id="form" role="form"  method="post" class="form-horizontal"
+                   modelAttribute="post" cssClass="hide1" autocomplete="false">
             <fieldset>
                 <div id="legend" class="">
                     <legend class="">发表一篇文章</legend>
@@ -34,7 +36,7 @@
                 <div class="control-group">
                     <span class="control-label">文章标题</span>
                     <div class="controls">
-                        <input type="text" placeholder="一句话概括你要表达的内容" class="form-control">
+                        <form:input id="title" path="title" name="title" placeholder="一句话概括你要表达的内容" class="form-control"/>
                     </div>
                 </div>
                 <div class="control-group">
@@ -45,17 +47,17 @@
                     </div>
                     <div class="controls">
                         <div class="textarea">
-                            <textarea class="form-control" placeholder="你要说什么？" rows="10"></textarea>
+                             <form:textarea id="content" path="content" value="${post.content}" class="form-control" placeholder="你要说什么？" rows="10"/>
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
-                        <button class="btn btn-default btn-create">完成</button>
+                        <button id="submit" class="btn btn-default btn-create">完成</button>
                     </div>
                 </div>
             </fieldset>
-        </form>
+        </form:form>
     </div>
     <div class="slide box">
         aaaa

@@ -12,6 +12,8 @@
 <head>
     <%@include file="include/head.meta.html" %>
     <%@include file="include/base.css.js.html" %>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/front.css">
     <title>login</title>
 </head>
 <body>

@@ -5,7 +5,7 @@ exports.rules = {
     tel: [/^(?:(?:0\d{2,3}[- ]?[1-9]\d{6,7})|(?:[48]00[- ]?[1-9]\d{6}))$/, "电话格式不正确"],  //办公或家庭电话
     mobile: [/^1[3-9]\d{9}$/, "手机号格式不正确"],  //移动电话
     email: [/^(?:[a-z0-9]+[_\-+.]?)*[a-z0-9]+@(?:([a-z0-9]+-?)*[a-z0-9]+\.)+([a-z]{2,})+$/i, "邮箱格式不正确"],
-    qq: [/^[1-9]\d{4,}$/,"QQ号格式不正确"],
+    qq: [/^[1-9]\d{4,}$/, "QQ号格式不正确"],
     date: [/^\d{4}-\d{1,2}-\d{1,2}$/, "请输入正确的日期,例:yyyy-mm-dd"],
     time: [/^([01]\d|2[0-3])(:[0-5]\d){1,2}$/, "请输入正确的时间,例:14:30或14:30:00"],
     ID_card: [/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[A-Z])$/, "请输入正确的身份证号码"],
@@ -15,12 +15,12 @@ exports.rules = {
     username: [/^\w{3,12}$/, "请输入3-12位数字、字母、下划线"], //用户名
     password: [/^[0-9a-zA-Z]{6,16}$/, "密码由6-16位数字、字母组成"], //密码
     //可接受的后缀名
-    accept: function(element, params){
+    accept: function (element, params) {
         if (!params) return true;
         var ext = params[0];
         return (ext === '*') ||
-               (new RegExp(".(?:" + (ext || "png|jpg|jpeg|gif") + ")$", "i")).test(element.value) ||
-               this.renderMsg("只接受{1}后缀", ext.replace('|', ','));
+            (new RegExp(".(?:" + (ext || "png|jpg|jpeg|gif") + ")$", "i")).test(element.value) ||
+            this.renderMsg("只接受{1}后缀", ext.replace('|', ','));
     }
 };
 
@@ -37,7 +37,7 @@ exports.lang = {
     integer_p: "请输入正整数",
     integer_pz: "请输入正整数或0",
     integer_n: "请输入负整数",
-    integer_nz: "请输入负整数或0", 
+    integer_nz: "请输入负整数或0",
 
     match_eq: "{0}与{1}不一致",
     match_neq: "{0}与{1}不能相同",
@@ -49,7 +49,7 @@ exports.lang = {
     range_rg: "请输入{1}到{2}的数",
     range_gt: "请输入大于或等于{1}的数",
     range_lt: "请输入小于或等于{1}的数",
-    
+
     checked_eq: "请选择{1}项",
     checked_rg: "请选择{1}到{2}项",
     checked_gt: "请至少选择{1}项",

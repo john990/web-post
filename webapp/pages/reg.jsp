@@ -16,7 +16,7 @@
 
 <style type="text/css">
 </style>
-<body >
+<body>
 <div class="container">
     <p id="formsContent">${error}</p>
     <p>${success}</p>
@@ -29,7 +29,8 @@
 
                 <div class="col-sm-10">
                     <form:input class="form-control" path="email"
-                                data-rule="邮箱:required;email" placeholder="邮箱" value="${user.email}"/>
+                                data-rule="邮箱:required;email" placeholder="邮箱"
+                                value="${user.email}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -37,7 +38,8 @@
 
                 <div class="col-sm-10">
                     <form:input class="form-control" path="name"
-                                data-rule="用户名:required;name" placeholder="用户名" value="${user.name}"/>
+                                data-rule="用户名:required;name" placeholder="用户名"
+                                value="${user.name}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -45,7 +47,7 @@
 
                 <div class="col-sm-10">
                     <form:password class="form-control" path="password"
-                                data-rule="用户名:required;password" placeholder="密码" value=""/>
+                                   data-rule="用户名:required;password" placeholder="密码" value=""/>
                 </div>
             </div>
         </fieldset>

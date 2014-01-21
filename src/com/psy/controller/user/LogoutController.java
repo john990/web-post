@@ -5,7 +5,6 @@ import com.psy.common.SessionAttribute;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/logout")
 public class LogoutController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String logout(HttpSession session){
-		session.removeAttribute(SessionAttribute.USER);
-		return "success";
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    public String logout(HttpSession session) {
+        session.removeAttribute(SessionAttribute.USER);
+        return "success";
+    }
 }

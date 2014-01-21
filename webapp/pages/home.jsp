@@ -30,7 +30,9 @@
                         <div class="topic topic_line">
                             <div class="pull-left avatar">
                                 <a href="#">
-                                    <img alt="153" class="uface" src="http://l.ruby-china.org/user/large_avatar/153.jpg" style="width:48px;height:48px;">
+                                    <img alt="153" class="uface"
+                                         src="http://l.ruby-china.org/user/large_avatar/153.jpg"
+                                         style="width:48px;height:48px;">
                                 </a>
                             </div>
                             <div class="right_info">
@@ -45,7 +47,8 @@
                                     <div class="info">
                                         <a class="node" href="#">${p.tag}</a>
                                         •由
-                                        <a data-name="杉杉" href="/user/${p.username}">${p.username}</a>
+                                        <a data-name="杉杉"
+                                           href="/user/${p.username}">${p.username}</a>
                                         <em>
                                             • 创建于
                                             <abbr class="timeago" title="${p.time}">${p.time}</abbr>

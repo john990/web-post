@@ -27,7 +27,7 @@
         </ol>
     </div>
     <div class="create-container box">
-        <form:form id="form" role="form"  method="post" class="form-horizontal"
+        <form:form id="form" role="form" method="post" class="form-horizontal"
                    modelAttribute="post" cssClass="hide1" autocomplete="false">
             <fieldset>
                 <div id="legend" class="">
@@ -36,7 +36,8 @@
                 <div class="control-group">
                     <span class="control-label">文章标题</span>
                     <div class="controls">
-                        <form:input id="title" path="title" name="title" placeholder="一句话概括你要表达的内容" class="form-control"/>
+                        <form:input id="title" path="title" name="title" placeholder="一句话概括你要表达的内容"
+                                    class="form-control"/>
                     </div>
                 </div>
                 <div class="control-group">
@@ -47,7 +48,8 @@
                     </div>
                     <div class="controls">
                         <div class="textarea">
-                             <form:textarea id="content" path="content" value="${post.content}" class="form-control" placeholder="你要说什么？" rows="10"/>
+                             <form:textarea id="content" path="content" value="${post.content}"
+                                            class="form-control" placeholder="你要说什么？" rows="10"/>
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,11 @@
         //theme: 'yellow_right',
         defaultMsg: "{0}格式不正確",
         loadingMsg: "正在驗證...",
-        
+
         // Custom rules
         rules: {
             digits: [/^\d*$/, "請輸入數字"]
-            
+
         }
     });
 
@@ -89,7 +89,7 @@
             formClass: 'n-yellow',
             msgClass: 'n-right',
             msgArrow: TPL_ARROW,
-            msgShow: function($msgbox, type){
+            msgShow: function ($msgbox, type) {
                 var $el = $msgbox.children();
                 if ($el.is(':animated')) return;
                 if (type === 'error') {
@@ -97,13 +97,13 @@
                         left: '20px',
                         opacity: 0
                     }).delay(100).show().stop().animate({
-                        left: '-4px',
-                        opacity: 1
-                    }, 150).animate({
-                        left: '3px'
-                    }, 80).animate({
-                        left: 0
-                    }, 80);
+                            left: '-4px',
+                            opacity: 1
+                        }, 150).animate({
+                            left: '3px'
+                        }, 80).animate({
+                            left: 0
+                        }, 80);
                 } else {
                     $el.css({
                         left: 0,
@@ -111,12 +111,12 @@
                     }).fadeIn(200);
                 }
             },
-            msgHide: function($msgbox, type){
+            msgHide: function ($msgbox, type) {
                 var $el = $msgbox.children();
                 $el.stop().delay(100).show().animate({
                     left: '20px',
                     opacity: 0
-                }, 300, function(){
+                }, 300, function () {
                     $msgbox.hide();
                 });
             }

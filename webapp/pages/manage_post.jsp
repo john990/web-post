@@ -72,55 +72,55 @@
     /** 每页显示的条数 */
     var MANAGE_POST_PER_PAGE = 10;
 
-    $(function(){
+    $(function () {
         loadCount(POST_STATUS_NOT_AUDIT);
 
         // 审核通过
-        $('#audit-success').click(function(){
+        $('#audit-success').click(function () {
             putStatus(POST_STATUS_NORMAL);
         });
         // 审核失败
-        $('#audit-fail').click(function(){
+        $('#audit-fail').click(function () {
             putStatus(POST_STATUS_AUDIT_REJECT);
         });
         // 删除
-        $('#audit-delete').click(function(){
+        $('#audit-delete').click(function () {
             putStatus(POST_STATUS_DELETE);
         });
     });
 
     // 加载文章数
-    function loadCount(status){
+    function loadCount(status) {
         $.ajax({
             type: 'GET',
-            url: "/manage/posts/count/"+status,
+            url: "/manage/posts/count/" + status,
             success: function (count) {
-                paging(count,0);
+                paging(count, 0);
             },
             dataType: "json"
         });
     }
 
     // 加载文章
-    function loadPosts(page){
+    function loadPosts(page) {
         $.ajax({
             type: 'GET',
-            url: "/manage/posts/"+page,
+            url: "/manage/posts/" + page,
             success: function (posts) {
-                packagePost(page,posts);
+                packagePost(page, posts);
             },
             dataType: "json"
         });
     }
 
     // 修改文章状态
-    function putStatus(status){
+    function putStatus(status) {
         $('#msg').html('修改中...');
         var ids = getCheckedId();
         $.ajax({
             type: 'POST',
             url: "/manage/posts/edit/status/",
-            data: { status:status,ids:ids },
+            data: { status: status, ids: ids },
             success: function (data) {
                 $('#msg').html('修改成功').hide('normal');
             },
@@ -132,41 +132,41 @@
     }
 
     // 组装post
-    function packagePost(page,posts){
+    function packagePost(page, posts) {
         $("#posts-table").find("tr:gt(0)").remove();
-        for(var i=0;i<posts.length;i++){
+        for (var i = 0; i < posts.length; i++) {
             var post = posts[i];
             var tds = '';
             var tr = '';
             var num = i + 1 + (page - 1) * MANAGE_POST_PER_PAGE;
-            var checkBox = '<label style="width: 100%;">&nbsp;<input type="checkbox" value="'+post.id+'">&nbsp;</label>';
-            tds += addToTd(num + '<span class="hide" id="post-id">'+post.id+'</span>','text-center');
-            tds += addToTd(checkBox,'text-center');
-            tds += addToTd(post.title,'');
-            tds += addToTd(addToA(post.cover,'','','点击查看'),'');
-            tds += addToTd(post.intro,'manage-post-content');
-            tds += addToTd(post.userName,'');
-            tds += addToTd(post.createAt,'');
-            tds += addToTd(intToPostStatusSpan(post.status),'');
-            tds += addToTd("edit",'');
-            tr = addToTr(tds,'');
+            var checkBox = '<label style="width: 100%;">&nbsp;<input type="checkbox" value="' + post.id + '">&nbsp;</label>';
+            tds += addToTd(num + '<span class="hide" id="post-id">' + post.id + '</span>', 'text-center');
+            tds += addToTd(checkBox, 'text-center');
+            tds += addToTd(post.title, '');
+            tds += addToTd(addToA(post.cover, '', '', '点击查看'), '');
+            tds += addToTd(post.intro, 'manage-post-content');
+            tds += addToTd(post.userName, '');
+            tds += addToTd(post.createAt, '');
+            tds += addToTd(intToPostStatusSpan(post.status), '');
+            tds += addToTd("edit", '');
+            tr = addToTr(tds, '');
             $("#posts-table > tbody:last").append(tr);
         }
     }
 
     // 分页算法
-    function paging(count,index){
+    function paging(count, index) {
         $('#pagination').pagination(count, {
-            current_page : index,
-            items_per_page : MANAGE_POST_PER_PAGE,
-            num_display_entries : 8,
-            callback : function(page_index){
-                loadPosts(page_index+1);
+            current_page: index,
+            items_per_page: MANAGE_POST_PER_PAGE,
+            num_display_entries: 8,
+            callback: function (page_index) {
+                loadPosts(page_index + 1);
             },
-            load_first_page : true,
-            prev_text : '&laquo;&nbsp;上一页',
-            next_text : '下一页&nbsp;&raquo;',
-            ul_class:'pagination pagination-sm'
+            load_first_page: true,
+            prev_text: '&laquo;&nbsp;上一页',
+            next_text: '下一页&nbsp;&raquo;',
+            ul_class: 'pagination pagination-sm'
         });
     }
 

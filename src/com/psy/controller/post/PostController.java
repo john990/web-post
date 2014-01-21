@@ -1,6 +1,5 @@
 package com.psy.controller.post;
 
-import com.psy.bean.view.*;
 import com.psy.bean.view.ViewPost;
 import com.psy.dao.PostDao;
 
@@ -18,16 +17,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping()
 public class PostController {
 
-	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
-	public String home(@PathVariable int id, ModelMap model) {
-		long start = System.currentTimeMillis();
-		ViewPost post = PostDao.findPostById(id);
-		if (post == null) {
-			return "404";
-		}
-		post.setCreateAt(post.getCreateAt().replace(".0", ""));
-		model.addAttribute("post", post);
-		System.out.println("time:" + (System.currentTimeMillis() - start));
-		return "post";
-	}
+    @RequestMapping(value = "post/{id}", method = RequestMethod.GET)
+    public String home(@PathVariable int id, ModelMap model) {
+        long start = System.currentTimeMillis();
+        ViewPost post = PostDao.findPostById(id);
+        if (post == null) {
+            return "404";
+        }
+        post.setCreateAt(post.getCreateAt().replace(".0", ""));
+        model.addAttribute("post", post);
+        System.out.println("time:" + (System.currentTimeMillis() - start));
+        return "post";
+    }
 }

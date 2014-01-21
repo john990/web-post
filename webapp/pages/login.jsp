@@ -32,7 +32,7 @@
                     <div class="controls">
                         <form:input class="form-control top-space-2" path="email"
                                     data-rule="邮箱:required;email" placeholder="邮箱"
-                                    value="${user.email}" />
+                                    value="${user.email}"/>
                     </div>
                 </div>
                 <div class="control-group top-space-10">
@@ -42,7 +42,7 @@
                     <div class="controls">
                         <form:password class="form-control top-space-2" path="password"
                                        data-rule="密码:required;password" placeholder="密码"
-                                       value="" />
+                                       value=""/>
                     </div>
                 </div>
                 <div id="msg-wrap" class="control-group top-space-10">

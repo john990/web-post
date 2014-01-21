@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Documented
 public @interface Login {
 
-	ResultTypeEnum value() default ResultTypeEnum.page;
+    ResultTypeEnum value() default ResultTypeEnum.page;
 
 }

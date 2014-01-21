@@ -1,6 +1,6 @@
-<%@ page import="com.psy.common.SessionAttribute" %>
-<%@ page import="com.psy.common.BeanUtils" %>
 <%@ page import="com.psy.bean.User" %>
+<%@ page import="com.psy.common.BeanUtils" %>
+<%@ page import="com.psy.common.SessionAttribute" %>
 <div class="container center">
     <ul id="nav" class="nav nav-pills">
         <li class="active"><a href="/">Home</a></li>
@@ -10,7 +10,7 @@
         <li><a href="/manage/posts">manage</a></li>
         <%
             Object object = session.getAttribute(SessionAttribute.USER);
-            if (object != null && !BeanUtils.isEmptyUser((User)object)) {
+            if (object != null && !BeanUtils.isEmptyUser((User) object)) {
                 out.print("<li><a href=\"/logout\">logout</a></li>");
             }
         %>

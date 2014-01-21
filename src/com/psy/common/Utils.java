@@ -5,11 +5,13 @@ package com.psy.common;
  */
 public class Utils {
 
-	/** 转换page参数 */
-	public static int parsePage(int page){
-		if(page < 1){
-			page = 1;
-		}
-		return page;
-	}
+    /**
+     * 转换page参数
+     */
+    public static int parsePage(int page) {
+        if (page < 1) {
+            page = 1;
+        }
+        return page;
+    }
 }

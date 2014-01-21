@@ -32,42 +32,42 @@ import javax.validation.Valid;
 @RequestMapping("/new/post")
 public class CreatePostController {
 
-	@Login
-	@RequestMapping(method = RequestMethod.GET)
-	public String createPost(ModelMap model) {
-		return "new_post";
-	}
+    @Login
+    @RequestMapping(method = RequestMethod.GET)
+    public String createPost(ModelMap model) {
+        return "new_post";
+    }
 
-	@ModelAttribute("post")
-	public FormPost createFormBean() {
-		return new FormPost();
-	}
+    @ModelAttribute("post")
+    public FormPost createFormBean() {
+        return new FormPost();
+    }
 
-	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String processSubmit(HttpSession session,
-	                            @Valid FormPost post, BindingResult result,
-	                            RedirectAttributes redirectAttrs) throws JSONException {
-		if (result.hasErrors()) {
-			List<FieldError> filedErrors = result.getFieldErrors();
-			JSONObject jsonObject = new JSONObject();
-			for (FieldError error : filedErrors) {
-				jsonObject.put(error.getField(), error.getDefaultMessage());
-			}
-			redirectAttrs.addFlashAttribute("post", post);
-			redirectAttrs.addFlashAttribute("message", jsonObject);
-			return "redirect:/new/post";
-		}
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String processSubmit(HttpSession session,
+                                @Valid
+                                FormPost post, BindingResult result, RedirectAttributes redirectAttrs) throws JSONException {
+        if (result.hasErrors()) {
+            List<FieldError> filedErrors = result.getFieldErrors();
+            JSONObject jsonObject = new JSONObject();
+            for (FieldError error : filedErrors) {
+                jsonObject.put(error.getField(), error.getDefaultMessage());
+            }
+            redirectAttrs.addFlashAttribute("post", post);
+            redirectAttrs.addFlashAttribute("message", jsonObject);
+            return "redirect:/new/post";
+        }
 
-		Object oriUser = session.getAttribute(SessionAttribute.USER);
-		User user = null;
-		if(oriUser != null && !BeanUtils.isEmptyUser( user=(User)oriUser )){
-			post.setUserId(user.getId());
-			PostDao.addPost(post);
-			return "redirect:/success";
-		}else{
-			SessionUtils.addNeedLoginTip(session);
-			return "redirect:/login";
-		}
-	}
+        Object oriUser = session.getAttribute(SessionAttribute.USER);
+        User user = null;
+        if (oriUser != null && !BeanUtils.isEmptyUser(user = (User) oriUser)) {
+            post.setUserId(user.getId());
+            PostDao.addPost(post);
+            return "redirect:/success";
+        } else {
+            SessionUtils.addNeedLoginTip(session);
+            return "redirect:/login";
+        }
+    }
 
 }

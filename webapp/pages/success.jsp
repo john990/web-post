@@ -20,15 +20,15 @@ ${url}
     int waitTime = 2;
     Object url = session.getAttribute(SessionAttribute.PRV_URL_LOGIN);
     String content = "";
-    if(url != null){
+    if (url != null) {
         session.removeAttribute(SessionAttribute.PRV_URL_LOGIN);
-        content=waitTime+";URL="+url.toString();
+        content = waitTime + ";URL=" + url.toString();
         out.print("2秒后跳转到登录之前页面");
-    }else{
+    } else {
         out.print("2秒后跳转到首页");
-        content=waitTime+";URL=/";
+        content = waitTime + ";URL=/";
     }
-    response.setHeader("REFRESH",content);
+    response.setHeader("REFRESH", content);
 %>
 </body>
 </html>

@@ -7,3 +7,9 @@ bin
 /webapp/META-INF
 .idea
 *.iml
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
